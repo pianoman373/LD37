@@ -7,9 +7,12 @@ public class Build_floor : MonoBehaviour {
 	// Use this for initialization
 	public GameObject prefab;
 	public int size;//max is 20 for now
+	public float speed;
+
 	public static GameObject[,] floor = new GameObject[20,20];
 	public static bool[,] up = new bool[20, 20];
-	public static Vector3[] moveDown = new Vector3[100];
+	public static Vector3[] moveDown = new Vector3[400];
+	public static Vector3[] moveUp = new Vector3[400];
 
 	void Start () {
 		for (int x=0;x<size; x++) {//loop though x and y
@@ -19,9 +22,12 @@ public class Build_floor : MonoBehaviour {
 			}
 		}
 	}
+
 	
 	// Update is called once per frame
 	void Update () {
-		
+		foreach(Vector3 i in moveUp){
+			
 	}
+}
 }

@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1023227947427466, guid: c65db968d201d4dc49f367f4be93b47a, type: 2}
   size: 10
+  speed: 0.3
 --- !u!1 &1755354321
 GameObject:
   m_ObjectHideFlags: 0
