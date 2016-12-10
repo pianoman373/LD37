@@ -22,7 +22,6 @@ public class Build_floor : MonoBehaviour {
 			}
 		}
 	}
-
 	
 	// Update is called once per frame
 	void Update () {
