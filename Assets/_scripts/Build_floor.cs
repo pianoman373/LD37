@@ -6,13 +6,16 @@ using UnityEngine;
 public class Build_floor : MonoBehaviour {
 	// Use this for initialization
 	public GameObject prefab;
-	public int size;
+	public int size;//max is 20 for now
 	public static GameObject[,] floor = new GameObject[20,20];
+	public static bool[,] up = new bool[20, 20];
+	public static Vector3[] moveDown = new Vector3[100];
 
 	void Start () {
-		for (int x=0;x<size; x++) {
+		for (int x=0;x<size; x++) {//loop though x and y
 			for (int y = 0; y < size; y++) {
-				floor[x,y] = Instantiate (prefab, new Vector3 (x, 0, y), new Quaternion ()) as GameObject;
+				up[x,y] = false; //set all to false
+				floor[x,y] = Instantiate (prefab, new Vector3 (x, 0, y), new Quaternion ()) as GameObject;//and add all
 			}
 		}
 	}
