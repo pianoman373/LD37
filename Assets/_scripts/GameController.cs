@@ -14,6 +14,20 @@ public class GameController : MonoBehaviour {
 	public static List<Vector2> moveDown = new List<Vector2>();
 	public static List<Vector2> moveUp = new List<Vector2>();
 
+    private int[,] map = new int[10, 10]
+    {
+        {1, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
+        {1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        {0, 0, 0, 1, 1, 1, 0, 0, 0, 0 },
+        {0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
+        {0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
+        {0, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+    };
+
 	void Start () {
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
@@ -40,7 +54,18 @@ public class GameController : MonoBehaviour {
 		for (int x = 0; x < size; x++) {
 			Instantiate (prefab, new Vector3 (x, .9f, size), new Quaternion (-0.707f,0,0,0.707f));
 		}
-	}
+
+        for (int x = 0; x < 10; x++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                if (map[x, j] == 1)
+                {
+                    MoveUp(x, j);
+                }
+            }
+        }
+    }
 
 	public void MoveUp(int x, int z){
 		moveUp.Add (new Vector2 (x,z));
@@ -52,9 +77,7 @@ public class GameController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        MoveUp(5, 5);
-
-		float y;
+        float y;
 		foreach (Vector2 i in moveUp) {
 			y = floor [(int)i.x, (int)i.y].transform.position.y;
 			if (y + (speed * Time.deltaTime) > 1) {
