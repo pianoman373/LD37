@@ -28,8 +28,8 @@ public class Map : MonoBehaviour {
 		{0, 0, 2, 0, 0, 0, 2, 0, 0, 0 },
 		{0, 2, 2, 0, 0, 0, 0, 0, 0, 0 },
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 0, 0, 3, 0, 0, 0 }
+		{0, 0, 0, 0, 3, 0, 0, 0, 0, 0 },
+		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 	};
 
 	void Start () {
@@ -116,6 +116,7 @@ public class Map : MonoBehaviour {
 	IEnumerator ExecuteAfterTime(float time){//to call the map to pop up
 		yield return new WaitForSeconds(time);
 		loadMap (map1);
+		Player.frezze = false;
 	}
 
 	void loadMap(int[,] map){ // a simple map loader
@@ -142,12 +143,20 @@ public class Map : MonoBehaviour {
 		
 	}
 
-	public static bool isCrate(int x, int z){
+	public static bool isCrate(float x, float z){
 		foreach(GameObject i in Crates){
 			if (i.transform.position == new Vector3 (x, 0.75f, z)) {
 				return true;
 			}
 		}
 		return false;
+	}
+	public static GameObject getCrate(float x, float z){
+		foreach(GameObject i in Crates){
+			if (i.transform.position == new Vector3 (x, 0.75f, z)) {
+				return i;
+			}
+		}
+		return null;
 	}
 }
