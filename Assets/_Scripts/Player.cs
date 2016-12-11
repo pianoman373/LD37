@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 	public float speed;
+	public float camSpeed;
 
 	public int x;
 	public int z;
+	public GameObject Camera;
+	public GameObject player2;
 
 	public static bool frezze = true;
 
@@ -17,10 +20,16 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		transform.position = new Vector3 (x, 1, z);
+		Camera.transform.LookAt (player2.transform.position);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//zoom
+		Camera.transform.localPosition += new Vector3(0, 0, Input.GetAxis("Mouse ScrollWheel")) * camSpeed * Time.deltaTime;
+		Camera.transform.LookAt (player2.transform.position);
+		Camera.transform.localRotation = new Quaternion (0, 0, 0, 0);
+		// move tiles
 		if (!moving && !frezze) {
 			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
 				way = "+x";
