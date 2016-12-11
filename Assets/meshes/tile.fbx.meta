@@ -8,9 +8,11 @@ ModelImporter:
     100000: Cube
     100002: Cube.001
     100004: //RootNode
+    100006: Sun
     400000: Cube
     400002: Cube.001
     400004: //RootNode
+    400006: Sun
     2300000: Cube
     2300002: Cube.001
     2300004: //RootNode
