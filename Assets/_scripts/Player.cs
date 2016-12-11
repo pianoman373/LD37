@@ -27,6 +27,15 @@ public class Player : MonoBehaviour {
 				x -= 1;
 				moving = true;
 			}
+			if (Input.GetAxis("Vertical") > 0&&!Map.isblock(x,z+1)) {
+				way = "+z";
+				z += 1;
+				moving = true;
+			} else if (Input.GetAxis("Vertical") < 0&&!Map.isblock(x,z-1)) {
+				way = "-z";
+				z -= 1;
+				moving = true;
+			}
 		}else {				
 			if (way == "+x") {
 				transform.position += new Vector3(1,0,0) * speed * Time.deltaTime;
@@ -39,6 +48,21 @@ public class Player : MonoBehaviour {
 				transform.position += new Vector3(-1,0,0) * speed * Time.deltaTime;
 				if (transform.position.x < x) {
 					transform.position = new Vector3(x,transform.position.y,transform.position.z);
+					moving = false;
+				}
+			}
+
+			if (way == "+z") {
+				transform.position += new Vector3(0,0,1) * speed * Time.deltaTime;
+				if (transform.position.z > z) {
+					transform.position = new Vector3(transform.position.x,transform.position.y,z);
+					moving = false;
+				}
+			}
+			if (way == "-z") {
+				transform.position += new Vector3(0,0,-1) * speed * Time.deltaTime;
+				if (transform.position.z < z) {
+					transform.position = new Vector3(transform.position.x,transform.position.y,z);
 					moving = false;
 				}
 			}
