@@ -39,6 +39,7 @@
                  "name":"button 1",
                  "properties":
                     {
+                     "color":"1",
                      "group":"1"
                     },
                  "rotation":0,
@@ -87,7 +88,7 @@
                  "name":"cube",
                  "properties":
                     {
-
+                     "color":"1"
                     },
                  "rotation":0,
                  "type":"cube",
@@ -103,6 +104,7 @@
                  "name":"button 2",
                  "properties":
                     {
+                     "color":"2",
                      "group":"2"
                     },
                  "rotation":0,
@@ -119,7 +121,7 @@
                  "name":"cube",
                  "properties":
                     {
-
+                     "color":"2"
                     },
                  "rotation":0,
                  "type":"cube",

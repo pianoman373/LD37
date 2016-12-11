@@ -35,6 +35,7 @@
   </object>
   <object id="43" name="button 1" type="button" gid="5" x="240" y="64" width="16" height="16">
    <properties>
+    <property name="color" value="1"/>
     <property name="group" value="1"/>
    </properties>
   </object>
@@ -48,13 +49,22 @@
     <property name="group" value="1"/>
    </properties>
   </object>
-  <object id="49" name="cube" type="cube" gid="7" x="80" y="128" width="16" height="16"/>
+  <object id="49" name="cube" type="cube" gid="7" x="80" y="128" width="16" height="16">
+   <properties>
+    <property name="color" value="1"/>
+   </properties>
+  </object>
   <object id="52" name="button 2" type="button" gid="5" x="192" y="224" width="16" height="16">
    <properties>
+    <property name="color" value="2"/>
     <property name="group" value="2"/>
    </properties>
   </object>
-  <object id="53" name="cube" type="cube" gid="7" x="256" y="128" width="16" height="16"/>
+  <object id="53" name="cube" type="cube" gid="7" x="256" y="128" width="16" height="16">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
   <object id="54" name="wall 2" type="wall" gid="6" x="128" y="304" width="16" height="16">
    <properties>
     <property name="group" value="2"/>
