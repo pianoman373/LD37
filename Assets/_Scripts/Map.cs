@@ -9,8 +9,16 @@ public class Map : MonoBehaviour {
 	public GameObject prefab;
 	public GameObject crate;
 	public float speed;
+	public Material color1;
+	public Material color2;
+	public Material color3;
+	public Material color4;
+	public Material color5;
+	public Material color6;
+	public Material color7;
 
-	const int size = 10;//max is 20 for now
+
+	const int size = 15;
 
 	public static List<GameObject> Crates = new List<GameObject>();
 	public static GameObject[,] floor = new GameObject[size,size];
@@ -113,12 +121,23 @@ public class Map : MonoBehaviour {
 		{
 			for (int y = 0; y < size; y++)
 			{
-				if (map [x, y] == 2) {
-					MoveUp (y, size - x - 1);
-				} else if (map [x, y] == 1) {
+				if (map [x, y] == 1) {
 					MoveDown (y, size - x - 1);
-				} else if (map [x, y] == 3) {
-					Crates.Add (Instantiate (crate, new Vector3 (y, 0.75f, size - x - 1), new Quaternion ()));
+					if (isCrate (y, size - x - 1)) {
+						Destroy (getCrate (y, size - x - 1));
+					}
+				} else if (map [x, y] == 2) {
+					MoveUp (y, size - x - 1);
+				} else if (map [x, y] >= 101&&map [x, y] <= 107) {
+					GameObject newCrate = Instantiate (crate, new Vector3 (y, 0.75f, size - x - 1), new Quaternion ());
+					if(map [x, y]-100==1)newCrate.GetComponent<Renderer> ().material = color1;
+					if(map [x, y]-100==2)newCrate.GetComponent<Renderer> ().material = color2;
+					if(map [x, y]-100==3)newCrate.GetComponent<Renderer> ().material = color3;
+					if(map [x, y]-100==4)newCrate.GetComponent<Renderer> ().material = color4;
+					if(map [x, y]-100==5)newCrate.GetComponent<Renderer> ().material = color5;
+					if(map [x, y]-100==6)newCrate.GetComponent<Renderer> ().material = color6;
+					if(map [x, y]-100==7)newCrate.GetComponent<Renderer> ().material = color7;
+					Crates.Add (newCrate);
 				}
 			}
 		}

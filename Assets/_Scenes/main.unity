@@ -228,6 +228,13 @@ MonoBehaviour:
   prefab: {fileID: 1102118836542352, guid: af08f9b194b2b4bf2922fe42df8f65ed, type: 2}
   crate: {fileID: 1350302875705184, guid: 669ce980a5afd418aa4866050ae87397, type: 2}
   speed: 3
+  color1: {fileID: 2100000, guid: d538fc9de5d4c464fa2570fa2df5acb6, type: 2}
+  color2: {fileID: 2100000, guid: e5fcc0e27a7b6495f97c4606a123d7cc, type: 2}
+  color3: {fileID: 2100000, guid: 7d216add137204577a6ef7fe1c997c73, type: 2}
+  color4: {fileID: 2100000, guid: cd13cb540a7a94605b54666d267955f0, type: 2}
+  color5: {fileID: 2100000, guid: 46ddc90de869f4b01b8d0df3bcb5a6c4, type: 2}
+  color6: {fileID: 2100000, guid: 240bcb25c25b4435dafd9088f6e69f56, type: 2}
+  color7: {fileID: 2100000, guid: 636a87bbe4b1640aea36eacdbf54816c, type: 2}
 --- !u!1 &1538227758
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   x: 5
-  z: 5
+  z: 10
 --- !u!4 &1538227762
 Transform:
   m_ObjectHideFlags: 0
