@@ -57,11 +57,11 @@ public class GameController : MonoBehaviour {
 
         for (int x = 0; x < 10; x++)
         {
-            for (int j = 0; j < 10; j++)
+            for (int y = 0; y < 10; y++)
             {
-                if (map[x, j] == 1)
+                if (map[x, y] == 1)
                 {
-                    MoveUp(x, j);
+                    MoveUp(x, y);
                 }
             }
         }
