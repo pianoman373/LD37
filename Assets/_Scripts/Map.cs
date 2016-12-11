@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Text;
+using System.IO; 
 
 public class Map : MonoBehaviour {
 	// Use this for initialization
@@ -18,19 +19,7 @@ public class Map : MonoBehaviour {
 	public static List<Vector2> moveUp = new List<Vector2>();
 	private List<Vector2> remove = new List<Vector2>();
 
-	private int[,] map1 = new int[10, 10]
-	{
-		{2, 0, 2, 0, 0, 0, 0, 0, 0, 0 },
-		{2, 2, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 2, 2, 2, 0, 0, 0, 0 },
-		{0, 0, 2, 0, 0, 0, 2, 0, 0, 0 },
-		{0, 0, 2, 0, 0, 0, 2, 0, 0, 0 },
-		{0, 2, 2, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 3, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-	};
+	private int[,] map1 = fromFile("maps/map1.map");
 
 	void Start () {
 		for (int x=0;x<size; x++) {//loop though x and y
@@ -156,6 +145,36 @@ public class Map : MonoBehaviour {
 			if (i.transform.position == new Vector3 (x, 0.75f, z)) {
 				return i;
 			}
+		}
+		return null;
+	}
+	public static int[,] fromFile(string path){
+		List<string[]> arrayOfFile = new List<string[]> ();
+		try {
+			string line;
+			StreamReader theReader = new StreamReader (path, Encoding.Default);
+			using (theReader) {
+				do {
+					line = theReader.ReadLine ();
+					if (line != null) {
+						arrayOfFile.Add (line.Split (','));
+					}
+				} while (line != null);   
+				theReader.Close ();
+				int[,] output = new int[arrayOfFile.Count, arrayOfFile [0].Length];
+				int linenum = 0;
+				foreach (string[] linee in arrayOfFile) {
+					int itemnum = 0;
+					foreach (string item in linee) {
+						output [linenum, itemnum] = System.Int16.Parse (item);
+						itemnum += 1;
+					}
+					linenum += 1;
+				}
+				return output;
+			}
+		} catch (System.Exception e) {
+			print ("{0}\n" + e.Message);
 		}
 		return null;
 	}
