@@ -18,7 +18,7 @@ public class Map : MonoBehaviour {
 	public Material color7;
 
 
-	const int size = 15;
+	const int size = 20;
 
 	public static List<GameObject> Crates = new List<GameObject>();
 	public static GameObject[,] floor = new GameObject[size,size];
@@ -27,9 +27,10 @@ public class Map : MonoBehaviour {
 	public static List<Vector2> moveUp = new List<Vector2>();
 	private List<Vector2> remove = new List<Vector2>();
 
-	private int[,] map1 = fromFile("maps/map1.map");
+	private int[,] map1;
 
 	void Start () {
+		map1 = json.loadMap ("template.json");
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
 				up[x,z] = false; //set all to false
