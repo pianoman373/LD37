@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="56">
+ <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="16">
   <image source="tilemap.png" width="64" height="64"/>
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
@@ -8,16 +8,16 @@
 3,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2,
 1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2,
 1,1,2,1,1,1,2,2,2,2,2,1,1,1,1,1,1,1,1,2,
-1,1,2,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,2,2,
-1,1,2,1,1,1,2,2,1,1,1,2,1,1,1,2,2,1,1,1,
-1,1,2,2,2,2,2,2,1,1,1,2,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,2,1,1,2,1,1,1,2,1,1,
-1,1,1,1,1,1,1,1,1,2,2,1,1,2,1,1,1,2,1,1,
-2,2,2,2,2,2,2,2,2,2,1,1,1,2,1,1,1,2,1,1,
-2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,
-2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,
-2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,2,1,
+1,1,2,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,2,2,
+1,1,2,1,1,1,2,1,1,1,1,2,1,1,1,2,2,2,2,2,
+1,1,2,2,2,2,2,1,1,1,1,2,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,2,2,2,1,2,1,1,1,2,1,1,
+1,1,1,1,1,1,1,1,1,2,2,2,1,2,1,1,1,2,1,1,
+2,2,2,2,2,2,2,2,2,2,2,2,1,2,1,1,1,2,1,1,
+2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,
+2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,
+2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,2,1,
 2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,2,1,
 2,2,2,2,2,2,2,2,2,1,1,1,2,2,2,1,1,1,2,1,
 1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,2,1,
@@ -27,4 +27,43 @@
 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4
 </data>
  </layer>
+ <objectgroup name="objects">
+  <object id="41" name="wall 1" type="wall" gid="6" x="224" y="80" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+   </properties>
+  </object>
+  <object id="43" name="button 1" type="button" gid="5" x="240" y="64" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+   </properties>
+  </object>
+  <object id="47" name="wall 1" type="wall" gid="6" x="208" y="80" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+   </properties>
+  </object>
+  <object id="48" name="wall 1" type="wall" gid="6" x="192" y="80" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+   </properties>
+  </object>
+  <object id="49" name="cube" type="cube" gid="7" x="80" y="128" width="16" height="16"/>
+  <object id="52" name="button 2" type="button" gid="5" x="192" y="224" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+   </properties>
+  </object>
+  <object id="53" name="cube" type="cube" gid="7" x="256" y="128" width="16" height="16"/>
+  <object id="54" name="wall 2" type="wall" gid="6" x="128" y="304" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+   </properties>
+  </object>
+  <object id="55" name="wall 2" type="wall" gid="6" x="128" y="320" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
