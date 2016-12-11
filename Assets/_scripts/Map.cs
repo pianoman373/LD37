@@ -6,11 +6,12 @@ using UnityEngine;
 public class Map : MonoBehaviour {
 	// Use this for initialization
 	public GameObject prefab;
+	public GameObject crate;
 	public float speed;
 
 	const int size = 10;//max is 20 for now
 
-
+	public static List<GameObject> Crates = new List<GameObject>();
 	public static GameObject[,] floor = new GameObject[size,size];
 	public static bool[,] up = new bool[size, size];
 	public static List<Vector2> moveDown = new List<Vector2>();
@@ -118,24 +119,33 @@ public class Map : MonoBehaviour {
 	}
 
 	void loadMap(int[,] map){ // a simple map loader
-		for (int x = size-1; x >= 0; x--)
+		for (int x = 0; x < size; x++)
 		{
 			for (int y = 0; y < size; y++)
 			{
 				if (map [x, y] == 1) {
-					MoveUp (x, y);
+					MoveUp (y, size-x-1);
 				} else {
-					MoveDown (x, y);
+					MoveDown (y, size-x-1);
 				}
 			}
 		}
 	}
 	public static bool isblock(int x, int z){
-		if (x >= 0 && x <= size && z >= 0 && z <= size) {
+		if (x >= 0 && x <= size-1 && z >= 0 && z <= size-1) {
 			return up [x, z];
 		} else {
 			return true;
 		}
 		
+	}
+
+	public static bool isCrate(int x, int z){
+		foreach(GameObject i in Crates){
+			if (i.transform.position == new Vector3 (x, 0.75f, z)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
