@@ -20,43 +20,43 @@ public class Map : MonoBehaviour {
 
 	private int[,] map1 = new int[10, 10]
 	{
-		{1, 0, 1, 0, 0, 0, 0, 0, 0, 0 },
-		{1, 1, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{2, 0, 2, 0, 0, 0, 0, 0, 0, 0 },
+		{2, 2, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 1, 1, 1, 0, 0, 0, 0 },
-		{0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
-		{0, 0, 1, 0, 0, 0, 1, 0, 0, 0 },
-		{0, 1, 1, 0, 0, 0, 0, 0, 0, 0 },
+		{0, 0, 0, 2, 2, 2, 0, 0, 0, 0 },
+		{0, 0, 2, 0, 0, 0, 2, 0, 0, 0 },
+		{0, 0, 2, 0, 0, 0, 2, 0, 0, 0 },
+		{0, 2, 2, 0, 0, 0, 0, 0, 0, 0 },
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+		{0, 0, 0, 0, 0, 0, 3, 0, 0, 0 }
 	};
 
 	void Start () {
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
 				up[x,z] = false; //set all to false
-				floor[x,z] = Instantiate (prefab, new Vector3 (x, 0, z), new Quaternion (-0.707f,0,0,0.707f));//and add all
+				floor[x,z] = Instantiate (prefab, new Vector3 (x, 0, z), new Quaternion ());//and add all
 			}
 		}
 		//left wall
 		for (int z = 0; z < size + 2; z++) {
-			Instantiate (prefab, new Vector3 (-1, 1, z - 1), new Quaternion (-0.707f,0,0,0.707f));
+			Instantiate (prefab, new Vector3 (-1, 1, z - 1), new Quaternion ());
 		}
 
 		//right wall
 		for (int z = 0; z < size + 2; z++) {
-			Instantiate (prefab, new Vector3 (size, 1, z - 1), new Quaternion (-0.707f,0,0,0.707f));
+			Instantiate (prefab, new Vector3 (size, 1, z - 1), new Quaternion ());
 		}
 
 		//top wall
 		for (int x = 0; x < size; x++) {
-			Instantiate (prefab, new Vector3 (x, 1, -1), new Quaternion (-0.707f,0,0,0.707f));
+			Instantiate (prefab, new Vector3 (x, 1, -1), new Quaternion ());
 		}
 
 		//bottom wall
 		for (int x = 0; x < size; x++) {
-			Instantiate (prefab, new Vector3 (x, 1, size), new Quaternion (-0.707f,0,0,0.707f));
+			Instantiate (prefab, new Vector3 (x, 1, size), new Quaternion ());
 		}
 		StartCoroutine(ExecuteAfterTime(1));
 	}
@@ -123,10 +123,12 @@ public class Map : MonoBehaviour {
 		{
 			for (int y = 0; y < size; y++)
 			{
-				if (map [x, y] == 1) {
-					MoveUp (y, size-x-1);
-				} else {
-					MoveDown (y, size-x-1);
+				if (map [x, y] == 2) {
+					MoveUp (y, size - x - 1);
+				} else if (map [x, y] == 1) {
+					MoveDown (y, size - x - 1);
+				} else if (map [x, y] == 3) {
+					Crates.Add (Instantiate (crate, new Vector3 (y, 0.75f, size - x - 1), new Quaternion ()));
 				}
 			}
 		}
