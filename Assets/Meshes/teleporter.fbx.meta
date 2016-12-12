@@ -1,0 +1,158 @@
+fileFormatVersion: 2
+guid: d945658f1b5374e3b801a423ceecb32d
+timeCreated: 1481579914
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: arm.l
+    100002: arm.l_end
+    100004: arm.r
+    100006: arm.r_end
+    100008: Armature
+    100010: button
+    100012: crate
+    100014: Cube
+    100016: finish
+    100018: foot.l
+    100020: foot.l_end
+    100022: foot.r
+    100024: foot.r_end
+    100026: head
+    100028: head_end
+    100030: knee.l
+    100032: knee.r
+    100034: leg.l
+    100036: leg.r
+    100038: robot-mesh
+    100040: root
+    100042: shoulder.l
+    100044: shoulder.r
+    100046: spine
+    100048: Sun
+    100050: Sun.001
+    100052: //RootNode
+    400000: arm.l
+    400002: arm.l_end
+    400004: arm.r
+    400006: arm.r_end
+    400008: Armature
+    400010: button
+    400012: crate
+    400014: Cube
+    400016: finish
+    400018: foot.l
+    400020: foot.l_end
+    400022: foot.r
+    400024: foot.r_end
+    400026: head
+    400028: head_end
+    400030: knee.l
+    400032: knee.r
+    400034: leg.l
+    400036: leg.r
+    400038: robot-mesh
+    400040: root
+    400042: shoulder.l
+    400044: shoulder.r
+    400046: spine
+    400048: Sun
+    400050: Sun.001
+    400052: //RootNode
+    2300000: button
+    2300002: crate
+    2300004: Cube
+    2300006: finish
+    2300008: //RootNode
+    3300000: button
+    3300002: crate
+    3300004: Cube
+    3300006: finish
+    3300008: //RootNode
+    4300000: robot-mesh
+    4300002: finish
+    4300004: crate
+    4300006: button
+    4300008: Cube
+    7400000: walking
+    7400002: arms-up
+    7400004: idle
+    7400006: idle-arms-up
+    7400008: arms-down
+    7400010: still
+    7400012: Armature|arms-down
+    7400014: Armature|arms-up
+    7400016: Armature|idle
+    7400018: Armature|idle-arms-up
+    7400020: Armature|still
+    7400022: Armature|walking
+    9500000: //RootNode
+    13700000: robot-mesh
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 100
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
