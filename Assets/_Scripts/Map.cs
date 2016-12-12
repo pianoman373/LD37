@@ -102,9 +102,12 @@ public class Map : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		
+		if(Input.GetKeyDown(KeyCode.R)){
+			loadMap (maps[0]);
+		}
 		if (nextMapb) {
 			if (maps.Count == 0) {
+				ResetMap.canReset = true;
 				endText.SetActive (true);
 				Player.frezze = true;
 			} else {
