@@ -24,7 +24,7 @@ public class Map : MonoBehaviour {
 
 
 	const int size = 20;
-
+	public bool fullReset = false;
 	public static bool nextMapb = false;
 	public static List<GameObject> Crates = new List<GameObject>();
 	public static List<GameObject> Buttons = new List<GameObject>();
@@ -103,11 +103,15 @@ public class Map : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.R)){
-			loadMap (maps[0]);
+			if (fullReset) {
+				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+			} else {
+				loadMap (maps [0]);
+			}
 		}
 		if (nextMapb) {
 			if (maps.Count == 0) {
-				ResetMap.canReset = true;
+				fullReset = true;
 				endText.SetActive (true);
 				Player.frezze = true;
 			} else {
@@ -115,6 +119,7 @@ public class Map : MonoBehaviour {
 			}
 			nextMapb = false;
 		}
+		remove = new List<Vector2>();
 		float y;
 		foreach (Vector2 i in moveUp) {
 			y = floor [(int)i.x, (int)i.y].transform.position.y;
@@ -131,6 +136,7 @@ public class Map : MonoBehaviour {
 		foreach (Vector2 i in remove) {
 			moveUp.Remove (i);
 		}
+		remove = null;
 		remove = new List<Vector2>();
 		foreach (Vector2 i in moveDown) {
 			y = floor [(int)i.x, (int)i.y].transform.position.y;
@@ -147,7 +153,9 @@ public class Map : MonoBehaviour {
 		foreach (Vector2 i in remove) {
 			moveDown.Remove (i);
 		}
+		remove = null;
 		remove = new List<Vector2>();
+
 	}
 
 	IEnumerator ExecuteAfterTime(float time){//to call the map to pop up
@@ -264,6 +272,19 @@ public class Map : MonoBehaviour {
 					if (i.x == j.x && j.w == 0f) {
 						MoveDown ((int)j.y, (int)j.z);
 					} else if (i.x == j.x && j.w == 1f) {
+						MoveUp ((int)j.y, (int)j.z);
+					}
+				}
+			}
+		}
+	}
+	public static void unTriggerButton(float x, float z){
+		foreach (Vector4 i in Group) {
+			if (i.w == 2 && i.y == x && i.z == z) {
+				foreach (Vector4 j in Group) {
+					if (i.x == j.x && j.w == 1f) {
+						MoveDown ((int)j.y, (int)j.z);
+					} else if (i.x == j.x && j.w == 0f) {
 						MoveUp ((int)j.y, (int)j.z);
 					}
 				}

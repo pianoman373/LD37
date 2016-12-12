@@ -62,7 +62,7 @@
     <property name="group" value="2"/>
    </properties>
   </object>
-  <object id="53" name="cube" type="cube" gid="7" x="224" y="224" width="16" height="16">
+  <object id="53" name="cube" type="cube" gid="7" x="208" y="224" width="16" height="16">
    <properties>
     <property name="color" value="3"/>
    </properties>
@@ -126,7 +126,7 @@
     <property name="inverted" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="114" name="wall 4" type="wall" gid="6" x="112" y="96" width="16" height="16">
+  <object id="114" name="wall 4" type="wall" gid="6" x="112" y="112" width="16" height="16">
    <properties>
     <property name="group" value="4"/>
     <property name="inverted" type="bool" value="false"/>
