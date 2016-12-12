@@ -14,6 +14,7 @@ public class json : MonoBehaviour {
 			List<Vector4> mapGroups = new List<Vector4>();
 			JSONObject json = new JSONObject (fileData);
 			JSONObject layers = json.list[json.keys.IndexOf("layers")];
+			int size = (int)json.list [json.keys.IndexOf ("height")].n;
 			int[,] output = new int[(int)layers.list [0] [1].n, (int)layers.list [0] [1].n];
 			int x = 0;
 			int z = 0;
@@ -29,14 +30,14 @@ public class json : MonoBehaviour {
 				if (i.list [i.keys.IndexOf ("type")].str == "wall") {
 					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
 					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = (properties.list [properties.keys.IndexOf ("inverted")].b)?1:2;
-					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str),((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16),(properties.list [properties.keys.IndexOf ("inverted")].b)?1:0));
+					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str), ((int)i.list [i.keys.IndexOf ("x")].n / 16),size - ((int)i.list [i.keys.IndexOf ("y")].n / 16),(properties.list [properties.keys.IndexOf ("inverted")].b)?1:0));
 				}else if (i.list [i.keys.IndexOf ("type")].str == "cube") {
 					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
 					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 100+int.Parse(properties.list[properties.keys.IndexOf ("color")].str);
 				}else if (i.list [i.keys.IndexOf ("type")].str == "button") {
 					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
 					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 110+int.Parse(properties.list[properties.keys.IndexOf ("color")].str);
-					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str),((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16),2));
+					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str), ((int)i.list [i.keys.IndexOf ("x")].n / 16),size-((int)i.list [i.keys.IndexOf ("y")].n / 16),2));
 				}
 			}
 			maps.Add(path, output);

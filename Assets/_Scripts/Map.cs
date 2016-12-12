@@ -29,6 +29,7 @@ public class Map : MonoBehaviour {
 	public static List<Vector2> moveDown = new List<Vector2>();
 	public static List<Vector2> moveUp = new List<Vector2>();
 	private List<Vector2> remove = new List<Vector2>();
+	public static List<Vector4> Group;
 
 	private string[] maps = {"template.json"};
 
@@ -68,14 +69,14 @@ public class Map : MonoBehaviour {
 		StartCoroutine(ExecuteAfterTime(1));
 	}
 
-	public void MoveUp(int x, int z){
+	public static void MoveUp(int x, int z){
 		if (!up [x, z]) {
 			moveUp.Add (new Vector2 (x, z));
 			up [x, z] = true;
 		}
 	}
 
-	public void MoveDown(int x, int z){
+	public static void MoveDown(int x, int z){
 		if (up [x, z]) {
 			moveDown.Add (new Vector2 (x, z));
 			up [x, z] = false;
@@ -145,7 +146,7 @@ public class Map : MonoBehaviour {
 		Crates = new List<GameObject>();
 		Buttons = new List<GameObject>();
 		int[,] map = json.maps[mapName];
-		List<Vector4> groups = json.groups[mapName]; 
+		Group = json.groups[mapName]; 
 		movePlayerSpawn(map);
 		for (int x = 0; x < size; x++)
 		{
@@ -225,6 +226,16 @@ public class Map : MonoBehaviour {
 		return null;
 	}
 	public static void triggerButton(float x, float z){
-	
+		foreach (Vector4 i in Group) {
+			if (i.w == 2 && i.y == x && i.z == z) {
+				foreach (Vector4 j in Group) {
+					if (i.x == j.x && j.w == 0f) {
+						MoveDown ((int)j.y, (int)j.z);
+					} else if (i.x == j.x && j.w == 1f) {
+						MoveUp ((int)j.y, (int)j.z);
+					}
+				}
+			}
+		}
 	}
 }
