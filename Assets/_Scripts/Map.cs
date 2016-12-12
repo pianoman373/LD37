@@ -182,6 +182,8 @@ public class Map : MonoBehaviour {
 		}
 	}
 	void loadMap(string mapName){ // a simple map loader
+		this.GetComponent<AudioSource>().Play(0);
+
 		foreach (GameObject i in Crates) {
 			Destroy (i);
 		}
@@ -273,7 +275,12 @@ public class Map : MonoBehaviour {
 		}
 		return null;
 	}
-	public static void triggerButton(float x, float z){
+	public void triggerButton(float x, float z) {
+		AudioSource audio = this.GetComponent<AudioSource> ();
+
+		if (!audio.isPlaying)
+			audio.Play (0);
+
 		foreach (Vector4 i in Group) {
 			if (i.w == 2 && i.y == x && i.z == z) {
 				foreach (Vector4 j in Group) {

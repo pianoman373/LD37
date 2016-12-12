@@ -10,6 +10,7 @@ public class Player : MonoBehaviour {
 	public static int z = 0;
 	public GameObject Camera;
 	public GameObject player2;
+	public Map map;
 
 	public static bool frezze = true;
 
@@ -50,10 +51,19 @@ public class Player : MonoBehaviour {
 		Camera.transform.LookAt (player2.transform.position);
 		Camera.transform.localRotation = new Quaternion (0, 0, 0, 0);
 
+		AudioSource audio = this.GetComponent<AudioSource> ();
+
 		//set animation
 		if (moving) {
+
+			if (!audio.isPlaying)
+				audio.Play (0);
+
 			player2.GetComponent<Animator> ().SetFloat ("walking", 1.0f);
 		} else {
+			if (audio.isPlaying)
+				audio.Stop ();
+
 			player2.GetComponent<Animator> ().SetFloat ("walking", 0.0f);
 		}
 
@@ -213,7 +223,7 @@ public class Player : MonoBehaviour {
 		if (Map.isButton (x, z)) {
 			GameObject button = Map.getButton (x, z);
 			if (button.GetComponent<Renderer> ().material.name == crate.GetComponent<Renderer> ().material.name) {
-				Map.triggerButton (x, z);
+				map.triggerButton (x, z);
 			}
 		}
 	}
