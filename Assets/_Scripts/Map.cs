@@ -57,22 +57,26 @@ public class Map : MonoBehaviour {
 		}
 		//left wall
 		for (int z = 0; z < size + 2; z++) {
-			Instantiate (prefab, new Vector3 (-1, 1, z - 1), new Quaternion ());
+			GameObject obj = Instantiate (prefab, new Vector3 (-1, 1, z - 1), new Quaternion ());
+			obj.GetComponent<Tile> ().turnOn ();
 		}
 
 		//right wall
 		for (int z = 0; z < size + 2; z++) {
-			Instantiate (prefab, new Vector3 (size, 1, z - 1), new Quaternion ());
+			GameObject obj = Instantiate (prefab, new Vector3 (size, 1, z - 1), new Quaternion ());
+			obj.GetComponent<Tile> ().turnOn ();
 		}
 
 		//top wall
 		for (int x = 0; x < size; x++) {
-			Instantiate (prefab, new Vector3 (x, 1, -1), new Quaternion ());
+			GameObject obj = Instantiate (prefab, new Vector3 (x, 1, -1), new Quaternion ());
+			obj.GetComponent<Tile> ().turnOn ();
 		}
 
 		//bottom wall
 		for (int x = 0; x < size; x++) {
-			Instantiate (prefab, new Vector3 (x, 1, size), new Quaternion ());
+			GameObject obj = Instantiate (prefab, new Vector3 (x, 1, size), new Quaternion ());
+			obj.GetComponent<Tile> ().turnOn ();
 		}
 		StartCoroutine(ExecuteAfterTime(1));
 	}
@@ -81,6 +85,8 @@ public class Map : MonoBehaviour {
 		if (!up [x, z]) {
 			moveUp.Add (new Vector2 (x, z));
 			up [x, z] = true;
+
+			floor [x, z].GetComponent<Tile> ().turnOn ();
 		}
 	}
 
@@ -88,6 +94,8 @@ public class Map : MonoBehaviour {
 		if (up [x, z]) {
 			moveDown.Add (new Vector2 (x, z));
 			up [x, z] = false;
+
+			floor [x, z].GetComponent<Tile> ().turnOff ();
 		}
 	}
 
