@@ -26,6 +26,22 @@ public class Player : MonoBehaviour {
 		x = x2;
 		z = z2;
 	}
+
+	public Vector2 getLook() {
+		if (way == "+x")
+			return new Vector2 (x + 1, z);
+
+		if (way == "-x")
+			return new Vector2 (x - 1, z);
+
+		if (way == "-z")
+			return new Vector2 (x, z - 1);
+
+		if (way == "+z")
+			return new Vector2 (x, z + 1);
+
+		return new Vector2 (x, z);
+	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,6 +55,14 @@ public class Player : MonoBehaviour {
 			player2.GetComponent<Animator> ().SetFloat ("walking", 1.0f);
 		} else {
 			player2.GetComponent<Animator> ().SetFloat ("walking", 0.0f);
+		}
+
+		Vector2 look = getLook ();
+
+		if (Map.isCrate (look.x, look.y)) {
+			player2.GetComponent<Animator> ().SetBool ("arms-up", true);
+		} else {
+			player2.GetComponent<Animator> ().SetBool ("arms-up", false);
 		}
 
 		// move tiles
