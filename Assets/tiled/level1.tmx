@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="117">
+ <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="tilemap.png" width="64" height="64"/>
+  <tile id="4">
+   <properties>
+    <property name="color" value="1"/>
+    <property name="group" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="group" value="1"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="color" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,4,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="41" name="wall 1" type="wall" gid="6" x="112" y="144" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="43" name="button 1" type="button" gid="5" x="192" y="160" width="16" height="16">
+   <properties>
+    <property name="color" value="3"/>
+    <property name="group" value="3"/>
+   </properties>
+  </object>
+  <object id="47" name="wall 1" type="wall" gid="6" x="112" y="160" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="48" name="wall 1" type="wall" gid="6" x="112" y="48" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="49" name="cube" type="cube" gid="7" x="256" y="240" width="16" height="16">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object id="52" name="button 2" type="button" gid="5" x="224" y="160" width="16" height="16">
+   <properties>
+    <property name="color" value="2"/>
+    <property name="group" value="2"/>
+   </properties>
+  </object>
+  <object id="53" name="cube" type="cube" gid="7" x="224" y="240" width="16" height="16">
+   <properties>
+    <property name="color" value="3"/>
+   </properties>
+  </object>
+  <object id="54" name="wall 2" type="wall" gid="6" x="160" y="192" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="55" name="wall 2" type="wall" gid="6" x="160" y="144" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="84" name="wall 2" type="wall" gid="6" x="160" y="288" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="85" name="button 3" type="button" gid="5" x="256" y="160" width="16" height="16">
+   <properties>
+    <property name="color" value="4"/>
+    <property name="group" value="4"/>
+   </properties>
+  </object>
+  <object id="86" name="cube" type="cube" gid="7" x="192" y="240" width="16" height="16">
+   <properties>
+    <property name="color" value="4"/>
+   </properties>
+  </object>
+  <object id="87" name="wall 1" type="wall" gid="6" x="112" y="192" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="88" name="wall 1" type="wall" gid="6" x="112" y="208" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="89" name="wall 1" type="wall" gid="6" x="112" y="224" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="90" name="wall 1" type="wall" gid="6" x="112" y="256" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="91" name="wall 1" type="wall" gid="6" x="112" y="272" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="92" name="wall 1" type="wall" gid="6" x="112" y="288" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="94" name="wall 1" type="wall" gid="6" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="95" name="wall 1" type="wall" gid="6" x="112" y="112" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="96" name="wall 1" type="wall" gid="6" x="112" y="128" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="97" name="wall 2" type="wall" gid="6" x="160" y="160" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="98" name="wall 2" type="wall" gid="6" x="160" y="176" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="99" name="wall 2" type="wall" gid="6" x="160" y="128" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="100" name="wall 2" type="wall" gid="6" x="160" y="112" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="101" name="wall 2" type="wall" gid="6" x="160" y="96" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="102" name="wall 2" type="wall" gid="6" x="160" y="80" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="103" name="wall 2" type="wall" gid="6" x="160" y="64" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="104" name="wall 2" type="wall" gid="6" x="160" y="48" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="105" name="wall 2" type="wall" gid="6" x="160" y="256" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="106" name="wall 2" type="wall" gid="6" x="160" y="240" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="107" name="wall 2" type="wall" gid="6" x="160" y="224" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="108" name="wall 2" type="wall" gid="6" x="160" y="208" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="109" name="wall 2" type="wall" gid="6" x="160" y="272" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="110" name="wall 1" type="wall" gid="6" x="112" y="240" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="111" name="wall 1" type="wall" gid="6" x="112" y="176" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="112" name="wall 1" type="wall" gid="6" x="112" y="64" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="113" name="wall 1" type="wall" gid="6" x="112" y="80" width="16" height="16">
+   <properties>
+    <property name="group" value="3"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="114" name="wall 3" type="wall" gid="6" x="48" y="288" width="16" height="16">
+   <properties>
+    <property name="group" value="4"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="115" name="wall 3" type="wall" gid="6" x="32" y="272" width="16" height="16">
+   <properties>
+    <property name="group" value="4"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="116" name="wall 3" type="wall" gid="6" x="48" y="272" width="16" height="16">
+   <properties>
+    <property name="group" value="4"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -46,7 +46,8 @@ public class Map : MonoBehaviour {
 
 	void Start () {
 		maps.Add ("tutorial.json");
-		maps.Add ("template.json");
+		maps.Add ("level1.json");
+		maps.Add ("level2.json");
 		loadMaps ();
 		movePlayerSpawn(json.maps[maps[0]]);
 		for (int x=0;x<size; x++) {//loop though x and y
