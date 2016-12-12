@@ -41,6 +41,7 @@ public class Map : MonoBehaviour {
 
 	void Start () {
 		loadMaps ();
+		movePlayerSpawn(json.maps[maps[0]]);
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
 				up[x,z] = false; //set all to false
