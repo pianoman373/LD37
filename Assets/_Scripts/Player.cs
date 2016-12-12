@@ -157,7 +157,7 @@ public class Player : MonoBehaviour {
 		if (Map.isButton (x, z)) {
 			GameObject button = Map.getButton (x, z);
 			if (button.GetComponent<Renderer> ().material.name == crate.GetComponent<Renderer> ().material.name) {
-				Map.triggerButton (x, z);
+				Map.triggerButton (x, z-1);
 			}
 		}
 	}
