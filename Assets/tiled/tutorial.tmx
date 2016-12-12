@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="16" tileheight="16" nextobjectid="85">
+ <tileset firstgid="1" name="tilemap" tilewidth="16" tileheight="16" tilecount="16" columns="4">
+  <image source="tilemap.png" width="64" height="64"/>
+  <tile id="4">
+   <properties>
+    <property name="color" value="1"/>
+    <property name="group" value="1"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="group" value="1"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="color" value="1"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,3,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,2,2,
+2,2,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,4,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup name="objects">
+  <object id="41" name="wall 1" type="wall" gid="6" x="112" y="112" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="43" name="button 1" type="button" gid="5" x="80" y="112" width="16" height="16">
+   <properties>
+    <property name="color" value="1"/>
+    <property name="group" value="1"/>
+   </properties>
+  </object>
+  <object id="47" name="wall 1" type="wall" gid="6" x="112" y="128" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="48" name="wall 1" type="wall" gid="6" x="96" y="128" width="16" height="16">
+   <properties>
+    <property name="group" value="1"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="49" name="cube" type="cube" gid="7" x="192" y="272" width="16" height="16">
+   <properties>
+    <property name="color" value="1"/>
+   </properties>
+  </object>
+  <object id="52" name="button 2" type="button" gid="5" x="240" y="288" width="16" height="16">
+   <properties>
+    <property name="color" value="2"/>
+    <property name="group" value="2"/>
+   </properties>
+  </object>
+  <object id="53" name="cube" type="cube" gid="7" x="64" y="112" width="16" height="16">
+   <properties>
+    <property name="color" value="2"/>
+   </properties>
+  </object>
+  <object id="54" name="wall 2" type="wall" gid="6" x="256" y="272" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="55" name="wall 2" type="wall" gid="6" x="272" y="272" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="84" name="wall 2" type="wall" gid="6" x="256" y="288" width="16" height="16">
+   <properties>
+    <property name="group" value="2"/>
+    <property name="inverted" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
