@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using System.IO; 
+using UnityEngine.SceneManagement;
 
 public class Map : MonoBehaviour {
 	// Use this for initialization
@@ -10,6 +11,8 @@ public class Map : MonoBehaviour {
 	public GameObject crate;
 	public GameObject button;
 	public GameObject player;
+	public GameObject end;
+	public GameObject endText;
 	public float speed;
 	public Material color1;
 	public Material color2;
@@ -22,6 +25,7 @@ public class Map : MonoBehaviour {
 
 	const int size = 20;
 
+	public static bool nextMapb = false;
 	public static List<GameObject> Crates = new List<GameObject>();
 	public static List<GameObject> Buttons = new List<GameObject>();
 	public static GameObject[,] floor = new GameObject[size,size];
@@ -30,8 +34,9 @@ public class Map : MonoBehaviour {
 	public static List<Vector2> moveUp = new List<Vector2>();
 	private List<Vector2> remove = new List<Vector2>();
 	public static List<Vector4> Group;
+	public static GameObject endPoint;
 
-	private string[] maps = {"template.json"};
+	private static List<string> maps = new List<string>();
 
 	void loadMaps(){
 		foreach (string i in maps) {
@@ -40,6 +45,7 @@ public class Map : MonoBehaviour {
 	}
 
 	void Start () {
+		maps.Add ("template.json");
 		loadMaps ();
 		movePlayerSpawn(json.maps[maps[0]]);
 		for (int x=0;x<size; x++) {//loop though x and y
@@ -87,6 +93,15 @@ public class Map : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		if (nextMapb) {
+			if (maps.Count == 0) {
+				endText.SetActive (true);
+				Player.frezze = True;
+			} else {
+				loadMap (maps [0]);
+			}
+			nextMapb = false;
+		}
 		float y;
 		foreach (Vector2 i in moveUp) {
 			y = floor [(int)i.x, (int)i.y].transform.position.y;
@@ -146,6 +161,7 @@ public class Map : MonoBehaviour {
 		}
 		Crates = new List<GameObject>();
 		Buttons = new List<GameObject>();
+		Destroy (endPoint);
 		int[,] map = json.maps[mapName];
 		Group = json.groups[mapName]; 
 		movePlayerSpawn(map);
@@ -160,6 +176,8 @@ public class Map : MonoBehaviour {
 					}
 				} else if (map [x, y] == 2) {
 					MoveUp (y, size - x - 1);
+				} else if (map [x, y] == 4) {
+					endPoint = Instantiate (end, new Vector3 (y, 0.5f, size - x - 1), new Quaternion ());
 				}else if (map [x, y] >= 101&&map [x, y] <= 107) {
 					GameObject newCrate = Instantiate (crate, new Vector3 (y, 0.75f, size - x - 1), new Quaternion ());
 					if(map [x, y]-100==1)newCrate.GetComponent<Renderer> ().material = color1;
@@ -238,5 +256,10 @@ public class Map : MonoBehaviour {
 				}
 			}
 		}
+	}
+	public static void nextMap(){
+		json.maps.Remove(maps[0]);
+		maps.Remove (maps[0]);
+		nextMapb = true;
 	}
 }
