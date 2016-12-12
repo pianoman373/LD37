@@ -33,6 +33,14 @@ public class Player : MonoBehaviour {
 		Camera.transform.localPosition += new Vector3 (0, 0, Input.GetAxis ("Mouse ScrollWheel")) * camSpeed * Time.deltaTime;
 		Camera.transform.LookAt (player2.transform.position);
 		Camera.transform.localRotation = new Quaternion (0, 0, 0, 0);
+
+		//set animation
+		if (moving) {
+			player2.GetComponent<Animator> ().SetFloat ("walking", 1.0f);
+		} else {
+			player2.GetComponent<Animator> ().SetFloat ("walking", 0.0f);
+		}
+
 		// move tiles
 		if (moving && !frezze) {
 			if (pushingCrate) {
@@ -115,14 +123,14 @@ public class Player : MonoBehaviour {
 				x += 1;
 				moving = true;
 
-				player2.transform.rotation = Quaternion.Euler (0, -90, 0);
+				player2.transform.rotation = Quaternion.Euler (0, 90, 0);
 
 			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
 				way = "-x";
 				x -= 1;
 				moving = true;
 
-				player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+				player2.transform.rotation = Quaternion.Euler (0, -90, 0);
 
 			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
 				way = "+z";
