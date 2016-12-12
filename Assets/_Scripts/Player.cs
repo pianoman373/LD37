@@ -67,42 +67,7 @@ public class Player : MonoBehaviour {
 
 		// move tiles
 		if (moving && !frezze) {
-			if (pushingCrate) {
-				if (way == "+x") {
-					crate.transform.position += new Vector3 (1, 0, 0) * speed * Time.deltaTime;
-					if (crate.transform.position.x > x + 1) {
-						if (Input.GetAxis ("Horizontal") == 0||!canMove ("+x")) {
-							crate.transform.position = new Vector3 (x + 1, crate.transform.position.y, crate.transform.position.z);
-						}
-						tiggerButton (x + 1, z);
-					}
-				} else if (way == "-x") {
-					crate.transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
-					if (crate.transform.position.x < x - 1) {
-						if (Input.GetAxis ("Horizontal") == 0||!canMove ("-x")) {
-							crate.transform.position = new Vector3 (x - 1, crate.transform.position.y, crate.transform.position.z);
-						}
-						tiggerButton (x - 1, z);
-					}
-				} else if (way == "+z") {
-					crate.transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
-					if (crate.transform.position.z > z + 1) {
-						if (Input.GetAxis ("Vertical") == 0||!canMove ("+z")) {
-							crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z + 1);
-						}
-						tiggerButton (x, z + 1);
-					}
-				} else if (way == "-z") {
-					crate.transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
-					if (crate.transform.position.z < z - 1) {
-						if (Input.GetAxis ("Vertical") == 0||!canMove ("-z")) {
-							crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z - 1);
-						}
-						tiggerButton (x, z - 1);
-					}
-
-				}
-			}
+			bool pushingCrateFalse = false;
 			if (way == "+x") {
 				transform.position += new Vector3 (1, 0, 0) * speed * Time.deltaTime;
 				if (transform.position.x > x) {
@@ -110,7 +75,7 @@ public class Player : MonoBehaviour {
 						transform.position = new Vector3 (x, transform.position.y, transform.position.z);
 					}
 					moving = false;
-					pushingCrate = false;
+					pushingCrateFalse = true;
 				}
 			} else if (way == "-x") {
 				transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
@@ -119,7 +84,7 @@ public class Player : MonoBehaviour {
 						transform.position = new Vector3 (x, transform.position.y, transform.position.z);
 					}
 					moving = false;
-					pushingCrate = false;
+					pushingCrateFalse = true;
 				}
 			} else if (way == "+z") {
 				transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
@@ -128,7 +93,7 @@ public class Player : MonoBehaviour {
 						transform.position = new Vector3 (transform.position.x, transform.position.y, z);
 					}
 					moving = false;
-					pushingCrate = false;
+					pushingCrateFalse = true;
 				}
 			} else if (way == "-z") {
 				transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
@@ -137,8 +102,27 @@ public class Player : MonoBehaviour {
 						transform.position = new Vector3 (transform.position.x, transform.position.y, z);
 					}
 					moving = false;
-					pushingCrate = false;
+					pushingCrateFalse = true;
 				}
+			}
+			if (pushingCrate) {
+				if (way == "+x") {
+					crate.transform.position = this.transform.position + new Vector3 (1, 0, 0) - new Vector3 (0, .25f, 0);
+					tiggerButton (x + 1, z);
+				} else if (way == "-x") {
+					crate.transform.position = this.transform.position - new Vector3 (1, 0, 0)- new Vector3 (0, .25f, 0);
+					tiggerButton (x - 1, z);
+				} else if (way == "+z") {
+					crate.transform.position = this.transform.position + new Vector3 (0, 0, 1)- new Vector3 (0, .25f, 0);
+					tiggerButton (x, z + 1);
+				} else if (way == "-z") {
+					crate.transform.position = this.transform.position - new Vector3 (0, 0, 1)- new Vector3 (0, .25f, 0);
+					tiggerButton (x, z - 1);
+
+				}
+			}
+			if (pushingCrateFalse) {
+				pushingCrate = false;
 			}
 		} 
 		if (!moving&&!frezze) {
