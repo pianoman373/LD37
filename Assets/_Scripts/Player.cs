@@ -39,25 +39,33 @@ public class Player : MonoBehaviour {
 				if (way == "+x") {
 					crate.transform.position += new Vector3 (1, 0, 0) * speed * Time.deltaTime;
 					if (crate.transform.position.x > x + 1) {
-						crate.transform.position = new Vector3 (x + 1, crate.transform.position.y, crate.transform.position.z);
+						if (Input.GetAxis ("Horizontal") == 0||!canMove ("+x")) {
+							crate.transform.position = new Vector3 (x + 1, crate.transform.position.y, crate.transform.position.z);
+						}
 						tiggerButton (x + 1, z);
 					}
 				} else if (way == "-x") {
 					crate.transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
 					if (crate.transform.position.x < x - 1) {
-						crate.transform.position = new Vector3 (x - 1, crate.transform.position.y, crate.transform.position.z);
+						if (Input.GetAxis ("Horizontal") == 0||!canMove ("-x")) {
+							crate.transform.position = new Vector3 (x - 1, crate.transform.position.y, crate.transform.position.z);
+						}
 						tiggerButton (x - 1, z);
 					}
 				} else if (way == "+z") {
 					crate.transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
 					if (crate.transform.position.z > z + 1) {
-						crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z + 1);
+						if (Input.GetAxis ("Vertical") == 0||!canMove ("+z")) {
+							crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z + 1);
+						}
 						tiggerButton (x, z + 1);
 					}
 				} else if (way == "-z") {
 					crate.transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
 					if (crate.transform.position.z < z - 1) {
-						crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z - 1);
+						if (Input.GetAxis ("Vertical") == 0||!canMove ("-z")) {
+							crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z - 1);
+						}
 						tiggerButton (x, z - 1);
 					}
 
@@ -66,33 +74,42 @@ public class Player : MonoBehaviour {
 			if (way == "+x") {
 				transform.position += new Vector3 (1, 0, 0) * speed * Time.deltaTime;
 				if (transform.position.x > x) {
-					transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+					if (Input.GetAxis ("Horizontal") == 0) {
+						transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+					}
 					moving = false;
 					pushingCrate = false;
 				}
 			} else if (way == "-x") {
 				transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
 				if (transform.position.x < x) {
-					transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+					if (Input.GetAxis ("Horizontal") == 0) {
+						transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+					}
 					moving = false;
 					pushingCrate = false;
 				}
 			} else if (way == "+z") {
 				transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
 				if (transform.position.z > z) {
-					transform.position = new Vector3 (transform.position.x, transform.position.y, z);
+					if (Input.GetAxis ("Vertical") == 0) {
+						transform.position = new Vector3 (transform.position.x, transform.position.y, z);
+					}
 					moving = false;
 					pushingCrate = false;
 				}
 			} else if (way == "-z") {
 				transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
 				if (transform.position.z < z) {
-					transform.position = new Vector3 (transform.position.x, transform.position.y, z);
+					if (Input.GetAxis ("Vertical") == 0) {
+						transform.position = new Vector3 (transform.position.x, transform.position.y, z);
+					}
 					moving = false;
 					pushingCrate = false;
 				}
 			}
-		} else if (!frezze) {
+		} 
+		if (!moving&&!frezze) {
 			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
 				way = "+x";
 				x += 1;
