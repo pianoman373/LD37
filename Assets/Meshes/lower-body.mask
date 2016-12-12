@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1011 &101100000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: lower-body
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Armature
+    m_Weight: 0
+  - m_Path: Armature/root
+    m_Weight: 0
+  - m_Path: Armature/root/leg.l
+    m_Weight: 1
+  - m_Path: Armature/root/leg.l/knee.l
+    m_Weight: 1
+  - m_Path: Armature/root/leg.l/knee.l/foot.l
+    m_Weight: 1
+  - m_Path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+    m_Weight: 1
+  - m_Path: Armature/root/leg.r
+    m_Weight: 1
+  - m_Path: Armature/root/leg.r/knee.r
+    m_Weight: 1
+  - m_Path: Armature/root/leg.r/knee.r/foot.r
+    m_Weight: 1
+  - m_Path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+    m_Weight: 1
+  - m_Path: Armature/root/spine
+    m_Weight: 0
+  - m_Path: Armature/root/spine/head
+    m_Weight: 0
+  - m_Path: Armature/root/spine/head/head_end
+    m_Weight: 0
+  - m_Path: Armature/root/spine/shoulder.l
+    m_Weight: 0
+  - m_Path: Armature/root/spine/shoulder.l/arm.l
+    m_Weight: 0
+  - m_Path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+    m_Weight: 0
+  - m_Path: Armature/root/spine/shoulder.r
+    m_Weight: 0
+  - m_Path: Armature/root/spine/shoulder.r/arm.r
+    m_Weight: 0
+  - m_Path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+    m_Weight: 0
+  - m_Path: robot-mesh
+    m_Weight: 0

@@ -1,0 +1,553 @@
+fileFormatVersion: 2
+guid: 316f304cd2ae046b495b708615263e25
+timeCreated: 1481510029
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: arm.l
+    100002: arm.l_end
+    100004: arm.r
+    100006: arm.r_end
+    100008: Armature
+    100010: foot.l
+    100012: foot.l_end
+    100014: foot.r
+    100016: foot.r_end
+    100018: head
+    100020: head_end
+    100022: knee.l
+    100024: knee.r
+    100026: leg.l
+    100028: leg.r
+    100030: //RootNode
+    100032: robot-mesh
+    100034: shoulder.l
+    100036: shoulder.r
+    100038: spine
+    100040: root
+    400000: arm.l
+    400002: arm.l_end
+    400004: arm.r
+    400006: arm.r_end
+    400008: Armature
+    400010: foot.l
+    400012: foot.l_end
+    400014: foot.r
+    400016: foot.r_end
+    400018: head
+    400020: head_end
+    400022: knee.l
+    400024: knee.r
+    400026: leg.l
+    400028: leg.r
+    400030: //RootNode
+    400032: robot-mesh
+    400034: shoulder.l
+    400036: shoulder.r
+    400038: spine
+    400040: root
+    4300000: robot-mesh
+    7400000: Armature|ArmatureAction
+    7400002: idle
+    7400004: arms-up
+    7400006: Armature|arms-up
+    7400008: Armature|idle
+    7400010: Armature|PoseLib
+    7400012: idle-arms-up
+    7400014: arms-down
+    7400016: Armature|idle-arms-up
+    7400018: Armature|arms-down
+    7400020: Armature|walking
+    7400022: walking
+    7400024: still
+    9500000: //RootNode
+    13700000: robot-mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: idle
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/leg.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+        weight: 1
+      - path: Armature/root/leg.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+        weight: 1
+      - path: Armature/root/spine
+        weight: 1
+      - path: Armature/root/spine/head
+        weight: 1
+      - path: Armature/root/spine/head/head_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+        weight: 1
+      - path: robot-mesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: arms-up
+      takeName: arms-up
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/leg.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+        weight: 1
+      - path: Armature/root/leg.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+        weight: 1
+      - path: Armature/root/spine
+        weight: 1
+      - path: Armature/root/spine/head
+        weight: 1
+      - path: Armature/root/spine/head/head_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+        weight: 1
+      - path: robot-mesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: idle-arms-up
+      takeName: idle-arms-up
+      firstFrame: 0
+      lastFrame: 200
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/leg.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+        weight: 1
+      - path: Armature/root/leg.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+        weight: 1
+      - path: Armature/root/spine
+        weight: 1
+      - path: Armature/root/spine/head
+        weight: 1
+      - path: Armature/root/spine/head/head_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+        weight: 1
+      - path: robot-mesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: arms-down
+      takeName: arms-down
+      firstFrame: 0
+      lastFrame: 23
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/leg.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+        weight: 1
+      - path: Armature/root/leg.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+        weight: 1
+      - path: Armature/root/spine
+        weight: 1
+      - path: Armature/root/spine/head
+        weight: 1
+      - path: Armature/root/spine/head/head_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+        weight: 1
+      - path: robot-mesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: walking
+      takeName: walking
+      firstFrame: 0
+      lastFrame: 176
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/leg.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+        weight: 1
+      - path: Armature/root/leg.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+        weight: 1
+      - path: Armature/root/spine
+        weight: 1
+      - path: Armature/root/spine/head
+        weight: 1
+      - path: Armature/root/spine/head/head_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+        weight: 1
+      - path: robot-mesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: still
+      takeName: still
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/root
+        weight: 1
+      - path: Armature/root/leg.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l
+        weight: 1
+      - path: Armature/root/leg.l/knee.l/foot.l/foot.l_end
+        weight: 1
+      - path: Armature/root/leg.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r
+        weight: 1
+      - path: Armature/root/leg.r/knee.r/foot.r/foot.r_end
+        weight: 1
+      - path: Armature/root/spine
+        weight: 1
+      - path: Armature/root/spine/head
+        weight: 1
+      - path: Armature/root/spine/head/head_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l
+        weight: 1
+      - path: Armature/root/spine/shoulder.l/arm.l/arm.l_end
+        weight: 1
+      - path: Armature/root/spine/shoulder.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r
+        weight: 1
+      - path: Armature/root/spine/shoulder.r/arm.r/arm.r_end
+        weight: 1
+      - path: robot-mesh
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
