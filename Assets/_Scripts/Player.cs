@@ -58,21 +58,25 @@ public class Player : MonoBehaviour {
 					crate.transform.position += new Vector3 (1, 0, 0) * speed * Time.deltaTime;
 					if (crate.transform.position.x > x + 1) {
 						crate.transform.position = new Vector3 (x + 1, crate.transform.position.y, crate.transform.position.z);
+						tiggerButton (x + 1, z);
 					}
 				} else if (way == "-x") {
 					crate.transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
 					if (crate.transform.position.x < x - 1) {
 						crate.transform.position = new Vector3 (x - 1, crate.transform.position.y, crate.transform.position.z);
+						tiggerButton (x - 1, z);
 					}
 				} else if (way == "+z") {
 					crate.transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
 					if (crate.transform.position.z > z + 1) {
 						crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z + 1);
+						tiggerButton (x, z + 1);
 					}
 				} else if (way == "-z") {
 					crate.transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
 					if (crate.transform.position.z < z - 1) {
 						crate.transform.position = new Vector3 (crate.transform.position.x, crate.transform.position.y, z - 1);
+						tiggerButton (x, z - 1);
 					}
 
 				}
@@ -147,5 +151,14 @@ public class Player : MonoBehaviour {
 			return true;
 		}	
 		return false;
+	}
+
+	void tiggerButton(int x, int z){ //if any
+		if (Map.isButton (x, z)) {
+			GameObject button = Map.getButton (x, z);
+			if (button.GetComponent<Renderer> ().material.name == crate.GetComponent<Renderer> ().material.name) {
+				Map.triggerButton (x, z);
+			}
+		}
 	}
 }

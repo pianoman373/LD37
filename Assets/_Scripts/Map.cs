@@ -8,6 +8,7 @@ public class Map : MonoBehaviour {
 	// Use this for initialization
 	public GameObject prefab;
 	public GameObject crate;
+	public GameObject button;
 	public GameObject player;
 	public float speed;
 	public Material color1;
@@ -22,6 +23,7 @@ public class Map : MonoBehaviour {
 	const int size = 20;
 
 	public static List<GameObject> Crates = new List<GameObject>();
+	public static List<GameObject> Buttons = new List<GameObject>();
 	public static GameObject[,] floor = new GameObject[size,size];
 	public static bool[,] up = new bool[size, size];
 	public static List<Vector2> moveDown = new List<Vector2>();
@@ -134,6 +136,14 @@ public class Map : MonoBehaviour {
 		}
 	}
 	void loadMap(string mapName){ // a simple map loader
+		foreach (GameObject i in Crates) {
+			Destroy (i);
+		}
+		foreach (GameObject i in Buttons) {
+			Destroy (i);
+		}
+		Crates = new List<GameObject>();
+		Buttons = new List<GameObject>();
 		int[,] map = json.maps[mapName];
 		List<Vector4> groups = json.groups[mapName]; 
 		movePlayerSpawn(map);
@@ -158,6 +168,16 @@ public class Map : MonoBehaviour {
 					if(map [x, y]-100==6)newCrate.GetComponent<Renderer> ().material = color6;
 					if(map [x, y]-100==7)newCrate.GetComponent<Renderer> ().material = color7;
 					Crates.Add (newCrate);
+				}else if (map [x, y] >= 111&&map [x, y] <= 117) {
+					GameObject newButton = Instantiate (button, new Vector3 (y, 0.5f, size - x - 1), new Quaternion ());
+					if(map [x, y]-110==1)newButton.GetComponent<Renderer> ().material = color1;
+					if(map [x, y]-110==2)newButton.GetComponent<Renderer> ().material = color2;
+					if(map [x, y]-110==3)newButton.GetComponent<Renderer> ().material = color3;
+					if(map [x, y]-110==4)newButton.GetComponent<Renderer> ().material = color4;
+					if(map [x, y]-110==5)newButton.GetComponent<Renderer> ().material = color5;
+					if(map [x, y]-110==6)newButton.GetComponent<Renderer> ().material = color6;
+					if(map [x, y]-110==7)newButton.GetComponent<Renderer> ().material = color7;
+					Buttons.Add (newButton);
 				}
 			}
 		}
@@ -186,5 +206,25 @@ public class Map : MonoBehaviour {
 			}
 		}
 		return null;
+	}
+
+	public static bool isButton(float x, float z){
+		foreach(GameObject i in Buttons){
+			if (i.transform.position == new Vector3 (x, 0.5f, z)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public static GameObject getButton(float x, float z){
+		foreach (GameObject i in Buttons) {
+			if (i.transform.position == new Vector3 (x, 0.5f, z)) {
+				return i;
+			}
+		}
+		return null;
+	}
+	public static void triggerButton(float x, float z){
+	
 	}
 }
