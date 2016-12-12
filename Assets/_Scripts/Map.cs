@@ -96,7 +96,7 @@ public class Map : MonoBehaviour {
 		if (nextMapb) {
 			if (maps.Count == 0) {
 				endText.SetActive (true);
-				Player.frezze = True;
+				Player.frezze = true;
 			} else {
 				loadMap (maps [0]);
 			}
