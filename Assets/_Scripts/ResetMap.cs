@@ -9,8 +9,8 @@ public class ResetMap : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (canReset&&Input.GetKeyDown(KeyCode.Space)){
-			SceneManager.LoadScene (1);
+		if (canReset&&Input.GetKeyDown(KeyCode.R)){
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 	}
 }
