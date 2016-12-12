@@ -6,10 +6,12 @@ using System.IO;
 
 public class json : MonoBehaviour {
 	public static Dictionary<string,int[,]> maps = new Dictionary<string,int[,]>();
+	public static Dictionary<string,List<Vector4>> groups = new Dictionary<string,List<Vector4>>();
 
-	public static int[,] loadMap(string path) {
+	public static void loadMap(string path) {
 		string fileData = readFile ("maps/"+path);
 		if (fileData != null) { 
+			List<Vector4> mapGroups = new List<Vector4>();
 			JSONObject json = new JSONObject (fileData);
 			JSONObject layers = json.list[json.keys.IndexOf("layers")];
 			int[,] output = new int[(int)layers.list [0] [1].n, (int)layers.list [0] [1].n];
@@ -25,15 +27,18 @@ public class json : MonoBehaviour {
 			}
 			foreach (JSONObject i in layers.list[1][3].list){
 				if (i.list [i.keys.IndexOf ("type")].str == "wall") {
-					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 2;
+					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
+					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = (properties.list [properties.keys.IndexOf ("inverted")].b)?1:2;
+
+					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str),((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16),(properties.list [properties.keys.IndexOf ("inverted")].b)?1:0));
 				}else if (i.list [i.keys.IndexOf ("type")].str == "cube") {
 					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
 					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 100+int.Parse(properties.list[properties.keys.IndexOf ("color")].str);
 				}
 			}
-			return output;
+			maps.Add(path, output);
+			groups.Add (path, mapGroups);
 		}
-		return null;
 	}
 
 	static string readFile(string path){

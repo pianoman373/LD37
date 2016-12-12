@@ -28,11 +28,16 @@ public class Map : MonoBehaviour {
 	public static List<Vector2> moveUp = new List<Vector2>();
 	private List<Vector2> remove = new List<Vector2>();
 
-	private int[,] map1;
+	private string[] maps = {"template.json"};
+
+	void loadMaps(){
+		foreach (string i in maps) {
+			json.loadMap (i);
+		}
+	}
 
 	void Start () {
-		map1 = json.loadMap ("template.json");
-		movePlayerSpawn(map1);
+		loadMaps ();
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
 				up[x,z] = false; //set all to false
@@ -115,7 +120,7 @@ public class Map : MonoBehaviour {
 
 	IEnumerator ExecuteAfterTime(float time){//to call the map to pop up
 		yield return new WaitForSeconds(time);
-		loadMap (map1);
+		loadMap (maps[0]);
 		Player.frezze = false;
 	}
 	void movePlayerSpawn(int[,] map){
@@ -128,7 +133,10 @@ public class Map : MonoBehaviour {
 			}
 		}
 	}
-	void loadMap(int[,] map){ // a simple map loader
+	void loadMap(string mapName){ // a simple map loader
+		int[,] map = json.maps[mapName];
+		List<Vector4> groups = json.groups[mapName]; 
+		movePlayerSpawn(map);
 		for (int x = 0; x < size; x++)
 		{
 			for (int y = 0; y < size; y++)
@@ -172,40 +180,10 @@ public class Map : MonoBehaviour {
 		return false;
 	}
 	public static GameObject getCrate(float x, float z){
-		foreach(GameObject i in Crates){
+		foreach (GameObject i in Crates) {
 			if (i.transform.position == new Vector3 (x, 0.75f, z)) {
 				return i;
 			}
-		}
-		return null;
-	}
-	public static int[,] fromFile(string path){
-		List<string[]> arrayOfFile = new List<string[]> ();
-		try {
-			string line;
-			StreamReader theReader = new StreamReader (path, Encoding.Default);
-			using (theReader) {
-				do {
-					line = theReader.ReadLine ();
-					if (line != null) {
-						arrayOfFile.Add (line.Split (','));
-					}
-				} while (line != null);   
-				theReader.Close ();
-				int[,] output = new int[arrayOfFile.Count, arrayOfFile [0].Length];
-				int linenum = 0;
-				foreach (string[] linee in arrayOfFile) {
-					int itemnum = 0;
-					foreach (string item in linee) {
-						output [linenum, itemnum] = System.Int16.Parse (item);
-						itemnum += 1;
-					}
-					linenum += 1;
-				}
-				return output;
-			}
-		} catch (System.Exception e) {
-			print ("{0}\n" + e.Message);
 		}
 		return null;
 	}
