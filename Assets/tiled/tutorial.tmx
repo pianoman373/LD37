@@ -71,7 +71,7 @@
   </object>
   <object id="49" name="cube" type="cube" gid="7" x="192" y="272" width="16" height="16">
    <properties>
-    <property name="color" value="1"/>
+    <property name="color" value="2"/>
    </properties>
   </object>
   <object id="52" name="button 2" type="button" gid="5" x="240" y="288" width="16" height="16">
@@ -82,7 +82,7 @@
   </object>
   <object id="53" name="cube" type="cube" gid="7" x="64" y="112" width="16" height="16">
    <properties>
-    <property name="color" value="2"/>
+    <property name="color" value="1"/>
    </properties>
   </object>
   <object id="54" name="wall 2" type="wall" gid="6" x="256" y="272" width="16" height="16">
