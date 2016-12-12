@@ -6,8 +6,8 @@ public class Player : MonoBehaviour {
 	public float speed;
 	public float camSpeed;
 
-	public int x;
-	public int z;
+	public static int x = 0;
+	public static int z = 0;
 	public GameObject Camera;
 	public GameObject player2;
 
@@ -21,6 +21,10 @@ public class Player : MonoBehaviour {
 	void Start () {
 		transform.position = new Vector3 (x, 1, z);
 		Camera.transform.LookAt (player2.transform.position);
+	}
+	public static void setPos(int x2, int z2){
+		x = x2;
+		z = z2;
 	}
 	
 	// Update is called once per frame

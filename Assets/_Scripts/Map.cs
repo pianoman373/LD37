@@ -8,6 +8,7 @@ public class Map : MonoBehaviour {
 	// Use this for initialization
 	public GameObject prefab;
 	public GameObject crate;
+	public GameObject player;
 	public float speed;
 	public Material color1;
 	public Material color2;
@@ -31,6 +32,7 @@ public class Map : MonoBehaviour {
 
 	void Start () {
 		map1 = json.loadMap ("template.json");
+		movePlayerSpawn(map1);
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
 				up[x,z] = false; //set all to false
@@ -116,7 +118,18 @@ public class Map : MonoBehaviour {
 		loadMap (map1);
 		Player.frezze = false;
 	}
-
+	void movePlayerSpawn(int[,] map){
+		for (int x = 0; x < size; x++) {
+			for (int z = 0; z < size; z++) {
+				if (map [x, z] == 3) {
+					print (x);
+					print (z);
+					player.transform.position = new Vector3 (z, 1, size - x - 1);
+					Player.setPos (z, size - x - 1);
+				}
+			}
+		}
+	}
 	void loadMap(int[,] map){ // a simple map loader
 		for (int x = 0; x < size; x++)
 		{
@@ -129,7 +142,7 @@ public class Map : MonoBehaviour {
 					}
 				} else if (map [x, y] == 2) {
 					MoveUp (y, size - x - 1);
-				} else if (map [x, y] >= 101&&map [x, y] <= 107) {
+				}else if (map [x, y] >= 101&&map [x, y] <= 107) {
 					GameObject newCrate = Instantiate (crate, new Vector3 (y, 0.75f, size - x - 1), new Quaternion ());
 					if(map [x, y]-100==1)newCrate.GetComponent<Renderer> ().material = color1;
 					if(map [x, y]-100==2)newCrate.GetComponent<Renderer> ().material = color2;
