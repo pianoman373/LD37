@@ -10,10 +10,10 @@
          "width":20,
          "x":0,
          "y":0
-        }, 
+        },
         {
          "draworder":"topdown",
-         "height":20,
+         "height":0,
          "name":"objects",
          "objects":[
                 {
@@ -23,7 +23,13 @@
                  "name":"wall 1",
                  "properties":
                     {
-                     "group":"1"
+                     "group":"1",
+                     "inverted":false
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "inverted":"bool"
                     },
                  "rotation":0,
                  "type":"wall",
@@ -31,7 +37,7 @@
                  "width":16,
                  "x":224,
                  "y":80
-                }, 
+                },
                 {
                  "gid":5,
                  "height":16,
@@ -42,13 +48,18 @@
                      "color":"1",
                      "group":"1"
                     },
+                 "propertytypes":
+                    {
+                     "color":"string",
+                     "group":"string"
+                    },
                  "rotation":0,
                  "type":"button",
                  "visible":true,
                  "width":16,
                  "x":240,
                  "y":64
-                }, 
+                },
                 {
                  "gid":6,
                  "height":16,
@@ -56,7 +67,13 @@
                  "name":"wall 1",
                  "properties":
                     {
-                     "group":"1"
+                     "group":"1",
+                     "inverted":false
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "inverted":"bool"
                     },
                  "rotation":0,
                  "type":"wall",
@@ -64,7 +81,7 @@
                  "width":16,
                  "x":208,
                  "y":80
-                }, 
+                },
                 {
                  "gid":6,
                  "height":16,
@@ -72,7 +89,13 @@
                  "name":"wall 1",
                  "properties":
                     {
-                     "group":"1"
+                     "group":"1",
+                     "inverted":false
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "inverted":"bool"
                     },
                  "rotation":0,
                  "type":"wall",
@@ -80,7 +103,7 @@
                  "width":16,
                  "x":192,
                  "y":80
-                }, 
+                },
                 {
                  "gid":7,
                  "height":16,
@@ -90,13 +113,17 @@
                     {
                      "color":"1"
                     },
+                 "propertytypes":
+                    {
+                     "color":"string"
+                    },
                  "rotation":0,
                  "type":"cube",
                  "visible":true,
                  "width":16,
                  "x":80,
                  "y":128
-                }, 
+                },
                 {
                  "gid":5,
                  "height":16,
@@ -107,13 +134,18 @@
                      "color":"2",
                      "group":"2"
                     },
+                 "propertytypes":
+                    {
+                     "color":"string",
+                     "group":"string"
+                    },
                  "rotation":0,
                  "type":"button",
                  "visible":true,
                  "width":16,
                  "x":192,
                  "y":224
-                }, 
+                },
                 {
                  "gid":7,
                  "height":16,
@@ -123,13 +155,17 @@
                     {
                      "color":"2"
                     },
+                 "propertytypes":
+                    {
+                     "color":"string"
+                    },
                  "rotation":0,
                  "type":"cube",
                  "visible":true,
                  "width":16,
                  "x":256,
                  "y":128
-                }, 
+                },
                 {
                  "gid":6,
                  "height":16,
@@ -137,7 +173,13 @@
                  "name":"wall 2",
                  "properties":
                     {
-                     "group":"2"
+                     "group":"2",
+                     "inverted":false
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "inverted":"bool"
                     },
                  "rotation":0,
                  "type":"wall",
@@ -145,7 +187,7 @@
                  "width":16,
                  "x":128,
                  "y":304
-                }, 
+                },
                 {
                  "gid":6,
                  "height":16,
@@ -153,7 +195,13 @@
                  "name":"wall 2",
                  "properties":
                     {
-                     "group":"2"
+                     "group":"2",
+                     "inverted":false
+                    },
+                 "propertytypes":
+                    {
+                     "group":"string",
+                     "inverted":"bool"
                     },
                  "rotation":0,
                  "type":"wall",
@@ -165,33 +213,60 @@
          "opacity":1,
          "type":"objectgroup",
          "visible":true,
-         "width":20,
+         "width":0,
          "x":0,
          "y":0
         }],
  "nextobjectid":56,
  "orientation":"orthogonal",
- "properties":
-    {
-
-    },
  "renderorder":"right-down",
  "tileheight":16,
  "tilesets":[
         {
+         "columns":4,
          "firstgid":1,
          "image":"tilemap.png",
          "imageheight":64,
          "imagewidth":64,
          "margin":0,
          "name":"tilemap",
-         "properties":
-            {
-
-            },
          "spacing":0,
          "tilecount":16,
          "tileheight":16,
+         "tileproperties":
+            {
+             "4":
+                {
+                 "color":"1",
+                 "group":"1"
+                },
+             "5":
+                {
+                 "group":"1",
+                 "inverted":false
+                },
+             "6":
+                {
+                 "color":"1"
+                }
+            },
+         "tilepropertytypes":
+            {
+             "4":
+                {
+                 "color":"string",
+                 "group":"string"
+                },
+             "5":
+                {
+                 "group":"string",
+                 "inverted":"bool"
+                },
+             "6":
+                {
+                 "color":"string"
+                }
+            },
          "tilewidth":16
         }],
  "tilewidth":16,

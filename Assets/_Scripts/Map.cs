@@ -8,6 +8,8 @@ public class Map : MonoBehaviour {
 	// Use this for initialization
 	public GameObject prefab;
 	public GameObject crate;
+	public GameObject button;
+	public GameObject player;
 	public float speed;
 	public Material color1;
 	public Material color2;
@@ -21,16 +23,23 @@ public class Map : MonoBehaviour {
 	const int size = 20;
 
 	public static List<GameObject> Crates = new List<GameObject>();
+	public static List<GameObject> Buttons = new List<GameObject>();
 	public static GameObject[,] floor = new GameObject[size,size];
 	public static bool[,] up = new bool[size, size];
 	public static List<Vector2> moveDown = new List<Vector2>();
 	public static List<Vector2> moveUp = new List<Vector2>();
 	private List<Vector2> remove = new List<Vector2>();
 
-	private int[,] map1;
+	private string[] maps = {"template.json"};
+
+	void loadMaps(){
+		foreach (string i in maps) {
+			json.loadMap (i);
+		}
+	}
 
 	void Start () {
-		map1 = json.loadMap ("template.json");
+		loadMaps ();
 		for (int x=0;x<size; x++) {//loop though x and y
 			for (int z = 0; z < size; z++) {
 				up[x,z] = false; //set all to false
@@ -113,11 +122,31 @@ public class Map : MonoBehaviour {
 
 	IEnumerator ExecuteAfterTime(float time){//to call the map to pop up
 		yield return new WaitForSeconds(time);
-		loadMap (map1);
+		loadMap (maps[0]);
 		Player.frezze = false;
 	}
-
-	void loadMap(int[,] map){ // a simple map loader
+	void movePlayerSpawn(int[,] map){
+		for (int x = 0; x < size; x++) {
+			for (int z = 0; z < size; z++) {
+				if (map [x, z] == 3) {
+					player.transform.position = new Vector3 (z, 1, size - x - 1);
+					Player.setPos (z, size - x - 1);
+				}
+			}
+		}
+	}
+	void loadMap(string mapName){ // a simple map loader
+		foreach (GameObject i in Crates) {
+			Destroy (i);
+		}
+		foreach (GameObject i in Buttons) {
+			Destroy (i);
+		}
+		Crates = new List<GameObject>();
+		Buttons = new List<GameObject>();
+		int[,] map = json.maps[mapName];
+		List<Vector4> groups = json.groups[mapName]; 
+		movePlayerSpawn(map);
 		for (int x = 0; x < size; x++)
 		{
 			for (int y = 0; y < size; y++)
@@ -129,7 +158,7 @@ public class Map : MonoBehaviour {
 					}
 				} else if (map [x, y] == 2) {
 					MoveUp (y, size - x - 1);
-				} else if (map [x, y] >= 101&&map [x, y] <= 107) {
+				}else if (map [x, y] >= 101&&map [x, y] <= 107) {
 					GameObject newCrate = Instantiate (crate, new Vector3 (y, 0.75f, size - x - 1), new Quaternion ());
 					if(map [x, y]-100==1)newCrate.GetComponent<Renderer> ().material = color1;
 					if(map [x, y]-100==2)newCrate.GetComponent<Renderer> ().material = color2;
@@ -139,6 +168,16 @@ public class Map : MonoBehaviour {
 					if(map [x, y]-100==6)newCrate.GetComponent<Renderer> ().material = color6;
 					if(map [x, y]-100==7)newCrate.GetComponent<Renderer> ().material = color7;
 					Crates.Add (newCrate);
+				}else if (map [x, y] >= 111&&map [x, y] <= 117) {
+					GameObject newButton = Instantiate (button, new Vector3 (y, 0.5f, size - x - 1), new Quaternion ());
+					if(map [x, y]-110==1)newButton.GetComponent<Renderer> ().material = color1;
+					if(map [x, y]-110==2)newButton.GetComponent<Renderer> ().material = color2;
+					if(map [x, y]-110==3)newButton.GetComponent<Renderer> ().material = color3;
+					if(map [x, y]-110==4)newButton.GetComponent<Renderer> ().material = color4;
+					if(map [x, y]-110==5)newButton.GetComponent<Renderer> ().material = color5;
+					if(map [x, y]-110==6)newButton.GetComponent<Renderer> ().material = color6;
+					if(map [x, y]-110==7)newButton.GetComponent<Renderer> ().material = color7;
+					Buttons.Add (newButton);
 				}
 			}
 		}
@@ -161,41 +200,31 @@ public class Map : MonoBehaviour {
 		return false;
 	}
 	public static GameObject getCrate(float x, float z){
-		foreach(GameObject i in Crates){
+		foreach (GameObject i in Crates) {
 			if (i.transform.position == new Vector3 (x, 0.75f, z)) {
 				return i;
 			}
 		}
 		return null;
 	}
-	public static int[,] fromFile(string path){
-		List<string[]> arrayOfFile = new List<string[]> ();
-		try {
-			string line;
-			StreamReader theReader = new StreamReader (path, Encoding.Default);
-			using (theReader) {
-				do {
-					line = theReader.ReadLine ();
-					if (line != null) {
-						arrayOfFile.Add (line.Split (','));
-					}
-				} while (line != null);   
-				theReader.Close ();
-				int[,] output = new int[arrayOfFile.Count, arrayOfFile [0].Length];
-				int linenum = 0;
-				foreach (string[] linee in arrayOfFile) {
-					int itemnum = 0;
-					foreach (string item in linee) {
-						output [linenum, itemnum] = System.Int16.Parse (item);
-						itemnum += 1;
-					}
-					linenum += 1;
-				}
-				return output;
+
+	public static bool isButton(float x, float z){
+		foreach(GameObject i in Buttons){
+			if (i.transform.position == new Vector3 (x, 0.5f, z)) {
+				return true;
 			}
-		} catch (System.Exception e) {
-			print ("{0}\n" + e.Message);
+		}
+		return false;
+	}
+	public static GameObject getButton(float x, float z){
+		foreach (GameObject i in Buttons) {
+			if (i.transform.position == new Vector3 (x, 0.5f, z)) {
+				return i;
+			}
 		}
 		return null;
+	}
+	public static void triggerButton(float x, float z){
+	
 	}
 }

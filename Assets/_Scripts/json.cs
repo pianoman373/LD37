@@ -5,17 +5,19 @@ using System.Text;
 using System.IO;
 
 public class json : MonoBehaviour {
+	public static Dictionary<string,int[,]> maps = new Dictionary<string,int[,]>();
+	public static Dictionary<string,List<Vector4>> groups = new Dictionary<string,List<Vector4>>();
 
-	public static int[,] loadMap(string path) {
+	public static void loadMap(string path) {
 		string fileData = readFile ("maps/"+path);
 		if (fileData != null) { 
+			List<Vector4> mapGroups = new List<Vector4>();
 			JSONObject json = new JSONObject (fileData);
 			JSONObject layers = json.list[json.keys.IndexOf("layers")];
 			int[,] output = new int[(int)layers.list [0] [1].n, (int)layers.list [0] [1].n];
 			int x = 0;
 			int z = 0;
 			foreach (JSONObject i in layers.list[0][0].list) {
-				print (((string)x.ToString())+"-"+((string)z.ToString()));;
 				output[x,z] = (int)i.n;
 					z += 1;
 				if (z == (int)layers.list [0] [1].n) {
@@ -23,33 +25,23 @@ public class json : MonoBehaviour {
 					x += 1;
 				}
 			}
-			print (layers.list[1][3]);
-			return output;
-			/*
-			foreach (JSONObject j in layers.list) {
-				for(int i = 0; i < j.Count;i++){
-					print(j[i]);
+			foreach (JSONObject i in layers.list[1][3].list){
+				if (i.list [i.keys.IndexOf ("type")].str == "wall") {
+					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
+					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = (properties.list [properties.keys.IndexOf ("inverted")].b)?1:2;
+					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str),((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16),(properties.list [properties.keys.IndexOf ("inverted")].b)?1:0));
+				}else if (i.list [i.keys.IndexOf ("type")].str == "cube") {
+					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
+					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 100+int.Parse(properties.list[properties.keys.IndexOf ("color")].str);
+				}else if (i.list [i.keys.IndexOf ("type")].str == "button") {
+					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
+					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 110+int.Parse(properties.list[properties.keys.IndexOf ("color")].str);
+					mapGroups.Add (new Vector4(int.Parse(properties.list[properties.keys.IndexOf ("group")].str),((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16),2));
 				}
 			}
-/*
-			int length = 20;//int.Parse(list[keys.IndexOf("height")].str);
-			int[,] data = new int[length, length];
-			for (int i = 0;i < keys.Count;i++) {
-				if (keys[i] == "data") {
-					int index = 0;
-					int index2 = 0;
-					foreach(JSONObject j in list[i].list){
-						data [index2, index] = int.Parse(j.str);
-						index += 1;
-						if (index == length - 1) {
-							index2 += 1;
-						}
-					}
-				}
-			}*/
-			//return data;
+			maps.Add(path, output);
+			groups.Add (path, mapGroups);
 		}
-		return null;
 	}
 
 	static string readFile(string path){
