@@ -39,18 +39,29 @@ public class Player : MonoBehaviour {
 				way = "+x";
 				x += 1;
 				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, -90, 0);
+
 			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
 				way = "-x";
 				x -= 1;
 				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+
 			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
 				way = "+z";
 				z += 1;
 				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, 0, 0);
+
 			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")) {
 				way = "-z";
 				z -= 1;
 				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, 180, 0);
 			}
 		} else {
 			if (pushingCrate) {
