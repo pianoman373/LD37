@@ -30,40 +30,11 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//zoom
-		Camera.transform.localPosition += new Vector3(0, 0, Input.GetAxis("Mouse ScrollWheel")) * camSpeed * Time.deltaTime;
+		Camera.transform.localPosition += new Vector3 (0, 0, Input.GetAxis ("Mouse ScrollWheel")) * camSpeed * Time.deltaTime;
 		Camera.transform.LookAt (player2.transform.position);
 		Camera.transform.localRotation = new Quaternion (0, 0, 0, 0);
 		// move tiles
-		if (!moving && !frezze) {
-			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
-				way = "+x";
-				x += 1;
-				moving = true;
-
-				player2.transform.rotation = Quaternion.Euler (0, -90, 0);
-
-			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
-				way = "-x";
-				x -= 1;
-				moving = true;
-
-				player2.transform.rotation = Quaternion.Euler (0, 90, 0);
-
-			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
-				way = "+z";
-				z += 1;
-				moving = true;
-
-				player2.transform.rotation = Quaternion.Euler (0, 0, 0);
-
-			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")) {
-				way = "-z";
-				z -= 1;
-				moving = true;
-
-				player2.transform.rotation = Quaternion.Euler (0, 180, 0);
-			}
-		} else {
+		if (moving && !frezze) {
 			if (pushingCrate) {
 				if (way == "+x") {
 					crate.transform.position += new Vector3 (1, 0, 0) * speed * Time.deltaTime;
@@ -120,6 +91,35 @@ public class Player : MonoBehaviour {
 					moving = false;
 					pushingCrate = false;
 				}
+			}
+		} else if (!frezze) {
+			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
+				way = "+x";
+				x += 1;
+				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, -90, 0);
+
+			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
+				way = "-x";
+				x -= 1;
+				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+
+			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
+				way = "+z";
+				z += 1;
+				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, 0, 0);
+
+			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")) {
+				way = "-z";
+				z -= 1;
+				moving = true;
+
+				player2.transform.rotation = Quaternion.Euler (0, 180, 0);
 			}
 		}
 	}
