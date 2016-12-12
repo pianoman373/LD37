@@ -13,6 +13,7 @@ public class Map : MonoBehaviour {
 	public GameObject player;
 	public GameObject end;
 	public GameObject endText;
+	public GameObject beginText;
 	public float speed;
 	public Material color1;
 	public Material color2;
@@ -80,6 +81,7 @@ public class Map : MonoBehaviour {
 			obj.GetComponent<Tile> ().turnOn ();
 		}
 		StartCoroutine(ExecuteAfterTime(1));
+		StartCoroutine (ExecuteAfterTime2 (5));
 	}
 
 	public static void MoveUp(int x, int z){
@@ -105,6 +107,7 @@ public class Map : MonoBehaviour {
 		if(Input.GetKeyDown(KeyCode.R)){
 			if (fullReset) {
 				SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
 			} else {
 				loadMap (maps [0]);
 			}
@@ -146,7 +149,7 @@ public class Map : MonoBehaviour {
 				y -= (speed * Time.deltaTime);
 			}
 			floor [(int)i.x, (int)i.y].transform.position = new Vector3(i.x, y, i.y);
-			if (y == 1) {
+			if (y == 0) {
 				remove.Add(i);
 			}
 		}
@@ -162,6 +165,11 @@ public class Map : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		loadMap (maps[0]);
 		Player.frezze = false;
+	}
+
+	IEnumerator ExecuteAfterTime2(float time){//to call the map to pop up
+		yield return new WaitForSeconds(time);
+		beginText.SetActive (false);
 	}
 	void movePlayerSpawn(int[,] map){
 		for (int x = 0; x < size; x++) {
