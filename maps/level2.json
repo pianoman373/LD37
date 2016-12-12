@@ -97,7 +97,7 @@
                  "type":"cube",
                  "visible":true,
                  "width":16,
-                 "x":224,
+                 "x":208,
                  "y":224
                 }, 
                 {
@@ -338,7 +338,7 @@
                  "visible":true,
                  "width":16,
                  "x":112,
-                 "y":96
+                 "y":112
                 }, 
                 {
                  "gid":6,
