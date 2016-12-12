@@ -26,6 +26,9 @@ public class json : MonoBehaviour {
 			foreach (JSONObject i in layers.list[1][3].list){
 				if (i.list [i.keys.IndexOf ("type")].str == "wall") {
 					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 2;
+				}else if (i.list [i.keys.IndexOf ("type")].str == "cube") {
+					JSONObject properties = i.list [i.keys.IndexOf ("properties")];
+					output [((int)i.list [i.keys.IndexOf ("y")].n / 16)-1, ((int)i.list [i.keys.IndexOf ("x")].n / 16)] = 100+int.Parse(properties.list[properties.keys.IndexOf ("color")].str);
 				}
 			}
 			return output;

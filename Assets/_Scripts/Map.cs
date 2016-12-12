@@ -122,8 +122,6 @@ public class Map : MonoBehaviour {
 		for (int x = 0; x < size; x++) {
 			for (int z = 0; z < size; z++) {
 				if (map [x, z] == 3) {
-					print (x);
-					print (z);
 					player.transform.position = new Vector3 (z, 1, size - x - 1);
 					Player.setPos (z, size - x - 1);
 				}
