@@ -83,6 +83,7 @@ public class Player : MonoBehaviour {
 
 		// move tiles
 		if (!moving&&!frezze) {
+			pushingCrate = false;
 			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
 				way = "+x";
 				x += 1;
