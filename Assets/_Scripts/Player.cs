@@ -89,36 +89,36 @@ public class Player : MonoBehaviour {
 				if (transform.position.x > x) {
 					if (Input.GetAxis ("Horizontal") == 0||!canMove ("+x")) {
 						transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+						pushingCrateFalse = true;
 					}
 					moving = false;
-					pushingCrateFalse = true;
 				}
 			} else if (way == "-x") {
 				transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
 				if (transform.position.x < x) {
 					if (Input.GetAxis ("Horizontal") == 0||!canMove ("-x")) {
 						transform.position = new Vector3 (x, transform.position.y, transform.position.z);
+						pushingCrateFalse = true;
 					}
 					moving = false;
-					pushingCrateFalse = true;
 				}
 			} else if (way == "+z") {
 				transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
 				if (transform.position.z > z) {
 					if (Input.GetAxis ("Vertical") == 0||!canMove ("+z")) {
 						transform.position = new Vector3 (transform.position.x, transform.position.y, z);
+						pushingCrateFalse = true;
 					}
 					moving = false;
-					pushingCrateFalse = true;
 				}
 			} else if (way == "-z") {
 				transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
 				if (transform.position.z < z) {
 					if (Input.GetAxis ("Vertical") == 0||!canMove ("-z")) {
 						transform.position = new Vector3 (transform.position.x, transform.position.y, z);
+						pushingCrateFalse = true;
 					}
 					moving = false;
-					pushingCrateFalse = true;
 				}
 			}
 			if (pushingCrate) {
