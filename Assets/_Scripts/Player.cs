@@ -82,6 +82,37 @@ public class Player : MonoBehaviour {
 		}
 
 		// move tiles
+		if (!moving&&!frezze) {
+			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
+				way = "+x";
+				x += 1;
+				moving = true;
+
+				rotation = 90;
+
+			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
+				way = "-x";
+				x -= 1;
+				moving = true;
+
+				rotation = -90;
+
+			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
+				way = "+z";
+				z += 1;
+				moving = true;
+
+				rotation = 0;
+
+			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")) {
+				way = "-z";
+				z -= 1;
+				moving = true;
+
+				rotation = 180;
+			}
+		}
+
 		if (moving && !frezze) {
 			bool pushingCrateFalse = false;
 			if (way == "+x") {
@@ -146,28 +177,28 @@ public class Player : MonoBehaviour {
 			}
 		} 
 		if (!moving&&!frezze) {
-			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")) {
+			if (Input.GetAxis ("Horizontal") > 0 && canMove ("+x")&&way=="+x") {
 				way = "+x";
 				x += 1;
 				moving = true;
 
 				rotation = 90;
 
-			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
+			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")&&way=="-x") {
 				way = "-x";
 				x -= 1;
 				moving = true;
 
 				rotation = -90;
 
-			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
+			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")&&way=="+z") {
 				way = "+z";
 				z += 1;
 				moving = true;
 
 				rotation = 0;
 
-			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")) {
+			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")&&way=="-z") {
 				way = "-z";
 				z -= 1;
 				moving = true;
