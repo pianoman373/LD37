@@ -46,6 +46,7 @@ public class Map : MonoBehaviour {
 	}
 
 	void Start () {
+		json.Start ();
 		maps.Add ("tutorial.json");
 		maps.Add ("level1.json");
 		maps.Add ("level2.json");
@@ -135,6 +136,7 @@ public class Map : MonoBehaviour {
 			if (maps.Count == 0) {
 				fullReset = true;
 				endText.SetActive (true);
+				Player.moving = false;
 				Player.frezze = true;
 			} else {
 				loadMap (maps [0]);

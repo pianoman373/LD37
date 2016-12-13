@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 
 	public static bool frezze = true;
 
-	private bool moving = false;
+	public static bool moving = false;
 	private float rotation = 0;
 	private string way;
 	private bool pushingCrate = false;
