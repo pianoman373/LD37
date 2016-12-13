@@ -1424,6 +1424,7 @@ MonoBehaviour:
   Camera: {fileID: 1605351081}
   player2: {fileID: 1117153436}
   map: {fileID: 1491442576}
+  rotationSpeed: 400
 --- !u!4 &1538227762
 Transform:
   m_ObjectHideFlags: 0

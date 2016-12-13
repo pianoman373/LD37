@@ -11,10 +11,12 @@ public class Player : MonoBehaviour {
 	public GameObject Camera;
 	public GameObject player2;
 	public Map map;
+	public float rotationSpeed;
 
 	public static bool frezze = true;
 
 	private bool moving = false;
+	private float rotation = 0;
 	private string way;
 	private bool pushingCrate = false;
 	private GameObject crate;
@@ -42,6 +44,10 @@ public class Player : MonoBehaviour {
 			return new Vector2 (x, z + 1);
 
 		return new Vector2 (x, z);
+	}
+
+	private void moveToRotation (float angle) {
+		player2.transform.rotation = Quaternion.RotateTowards (player2.transform.rotation, Quaternion.Euler (0, angle, 0), rotationSpeed * Time.deltaTime);
 	}
 	
 	// Update is called once per frame
@@ -145,30 +151,32 @@ public class Player : MonoBehaviour {
 				x += 1;
 				moving = true;
 
-				player2.transform.rotation = Quaternion.Euler (0, 90, 0);
+				rotation = 90;
 
 			} else if (Input.GetAxis ("Horizontal") < 0 && canMove ("-x")) {
 				way = "-x";
 				x -= 1;
 				moving = true;
 
-				player2.transform.rotation = Quaternion.Euler (0, -90, 0);
+				rotation = -90;
 
 			} else if (Input.GetAxis ("Vertical") > 0 && canMove ("+z")) {
 				way = "+z";
 				z += 1;
 				moving = true;
 
-				player2.transform.rotation = Quaternion.Euler (0, 0, 0);
+				rotation = 0;
 
 			} else if (Input.GetAxis ("Vertical") < 0 && canMove ("-z")) {
 				way = "-z";
 				z -= 1;
 				moving = true;
 
-				player2.transform.rotation = Quaternion.Euler (0, 180, 0);
+				rotation = 180;
 			}
 		}
+
+		moveToRotation (rotation);
 	}
 	bool canMove(string way){
 		if (way == "+x" && !Map.isblock (x + 1, z)) {
