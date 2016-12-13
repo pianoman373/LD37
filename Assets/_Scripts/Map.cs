@@ -86,6 +86,15 @@ public class Map : MonoBehaviour {
 	}
 
 	public static void MoveUp(int x, int z){
+		bool isMovingDown = false;
+		foreach (Vector2 i in moveDown) {
+			if (i == new Vector2 (x, z)) {
+				isMovingDown = true;
+			}
+		}
+		if (isMovingDown) {
+			moveDown.Remove (new Vector2 (x, z));
+		}
 		if (!up [x, z]) {
 			moveUp.Add (new Vector2 (x, z));
 			up [x, z] = true;
@@ -95,6 +104,15 @@ public class Map : MonoBehaviour {
 	}
 
 	public static void MoveDown(int x, int z){
+		bool isMovingUp = false;
+		foreach (Vector2 i in moveUp) {
+			if (i == new Vector2 (x, z)) {
+				isMovingUp = true;
+			}
+		}
+		if (isMovingUp) {
+			moveUp.Remove (new Vector2 (x, z));
+		}
 		if (up [x, z]) {
 			moveDown.Add (new Vector2 (x, z));
 			up [x, z] = false;
