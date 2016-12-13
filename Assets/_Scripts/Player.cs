@@ -93,6 +93,7 @@ public class Player : MonoBehaviour {
 					}
 					moving = false;
 				}
+			unTiggerButton (x, z);
 			} else if (way == "-x") {
 				transform.position += new Vector3 (-1, 0, 0) * speed * Time.deltaTime;
 				if (transform.position.x < x) {
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour {
 					}
 					moving = false;
 				}
+				unTiggerButton (x, z);
 			} else if (way == "+z") {
 				transform.position += new Vector3 (0, 0, 1) * speed * Time.deltaTime;
 				if (transform.position.z > z) {
@@ -111,6 +113,7 @@ public class Player : MonoBehaviour {
 					}
 					moving = false;
 				}
+				unTiggerButton (x, z);
 			} else if (way == "-z") {
 				transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
 				if (transform.position.z < z) {
@@ -120,24 +123,21 @@ public class Player : MonoBehaviour {
 					}
 					moving = false;
 				}
+				unTiggerButton (x, z);
 			}
 			if (pushingCrate) {
 				if (way == "+x") {
 					crate.transform.position = this.transform.position + new Vector3 (1, 0, 0) - new Vector3 (0, .25f, 0);
 					tiggerButton (x + 1, z);
-					unTiggerButton (x, z);
 				} else if (way == "-x") {
 					crate.transform.position = this.transform.position - new Vector3 (1, 0, 0)- new Vector3 (0, .25f, 0);
 					tiggerButton (x - 1, z);
-					unTiggerButton (x, z);
 				} else if (way == "+z") {
 					crate.transform.position = this.transform.position + new Vector3 (0, 0, 1)- new Vector3 (0, .25f, 0);
 					tiggerButton (x, z + 1);
-					unTiggerButton (x, z);
 				} else if (way == "-z") {
 					crate.transform.position = this.transform.position - new Vector3 (0, 0, 1)- new Vector3 (0, .25f, 0);
 					tiggerButton (x, z - 1);
-					unTiggerButton (x, z);
 
 				}
 			}
@@ -180,6 +180,11 @@ public class Player : MonoBehaviour {
 	}
 	bool canMove(string way){
 		if (way == "+x" && !Map.isblock (x + 1, z)) {
+			if (pushingCrate) {
+				if (Map.isCrate (x + 2, z) || Map.isblock (x + 2, z)) {
+					return false;
+				}
+			}
 			if (Map.isCrate (x + 1, z)) {
 				if (Map.isCrate (x + 2, z) || Map.isblock (x + 2, z)) {
 					return false;
@@ -189,6 +194,11 @@ public class Player : MonoBehaviour {
 			}
 			return true;
 		} else if (way == "-x" && !Map.isblock (x - 1, z)) {
+			if (pushingCrate) {
+				if (Map.isCrate (x + 2, z) || Map.isblock (x - 2, z)) {
+					return false;
+				}
+			}
 			if (Map.isCrate (x - 1, z)) {
 				if (Map.isCrate (x - 2, z) || Map.isblock (x - 2, z)) {
 					return false;
@@ -198,6 +208,11 @@ public class Player : MonoBehaviour {
 			}
 			return true;
 		} else if (way == "-z" && !Map.isblock (x, z - 1)) {
+			if (pushingCrate) {
+				if (Map.isCrate (x + 2, z) || Map.isblock (x, z - 2)) {
+					return false;
+				}
+			}
 			if (Map.isCrate (x, z - 1)) {
 				if (Map.isCrate (x, z - 2) || Map.isblock (x, z - 2)) {
 					return false;
@@ -207,6 +222,11 @@ public class Player : MonoBehaviour {
 			}
 			return true;
 		} else if (way == "+z" && !Map.isblock (x, z + 1)) {
+			if (pushingCrate) {
+				if (Map.isCrate (x + 2, z) || Map.isblock (x, z + 2)) {
+					return false;
+				}
+			}
 			if (Map.isCrate (x, z + 1)) {
 				if (Map.isCrate (x, z + 2) || Map.isblock (x, z + 2)) {
 					return false;
