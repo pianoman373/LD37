@@ -269,7 +269,6 @@ public class Player : MonoBehaviour {
 			return true;
 		}	
 		return false;
-		pushingCrate = false;
 	}
 
 	void unTiggerButton(int x, int z){ //if any
